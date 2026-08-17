@@ -6,9 +6,6 @@ const sourceOrigin = process.env.PAGES_SOURCE_ORIGIN || "http://127.0.0.1:3000";
 const outputRoot = path.join(projectRoot, "docs");
 const routes = [
   "/",
-  "/projects/greenhouse-robot",
-  "/projects/hierarchical-motion-planning",
-  "/projects/camera-radar-bev-fusion",
 ];
 
 await rm(outputRoot, { recursive: true, force: true });

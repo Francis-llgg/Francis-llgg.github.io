@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { projectRecords } from "./project-data";
 
 type Locale = "en" | "zh";
 
@@ -213,6 +214,7 @@ const content = {
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("en");
   const [paperOpen, setPaperOpen] = useState(false);
+  const [openProject, setOpenProject] = useState<string | null>(null);
   const t = content[locale];
   const experienceEvidence = locale === "en"
     ? [
@@ -341,14 +343,39 @@ export default function Home() {
       <section className="work-section content-section" id="projects">
         <div className="section-heading"><div><p className="section-kicker">{t.workKicker}</p><h2>{t.workTitle}</h2></div></div>
         <div className="project-list">
-          {t.projects.map((project) => <a className={`project-index-card project-index-${project.slug}`} href={`/projects/${project.slug}${locale === "zh" ? "?lang=zh" : ""}`} key={project.number}>
-            <div className="project-index-visual"><span className="project-number">{project.number}</span><img src={project.cardImage} alt={project.slug === "greenhouse-robot" ? (locale === "en" ? "MIRTE Master hardware used for greenhouse deployment" : "用于温室真机部署的 MIRTE Master 硬件") : project.slug === "hierarchical-motion-planning" ? (locale === "en" ? "MuJoCo bartender workspace and mobile manipulator goal positions" : "MuJoCo 酒吧场景与移动操作机器人目标位置") : project.imageAlt} /></div>
-            <div className="project-index-copy">
-              <p className="project-type">{project.type}</p><h3>{project.title}</h3><p className="project-summary">{project.summary}</p>
-              <div className="project-index-evidence">{project.stats.slice(0, 2).map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
-              <div className="project-index-footer"><div className="tag-row">{project.stack.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div><b>{locale === "en" ? "View case study" : "查看项目详情"} ↗</b></div>
-            </div>
-          </a>)}
+          {t.projects.map((project) => {
+            const fullProject = projectRecords.find((item) => item.slug === project.slug)!;
+            const detail = fullProject[locale];
+            const isOpen = openProject === project.slug;
+            const detailId = `project-details-${project.slug}`;
+            const gallery = detail.gallery.slice(1);
+
+            return <article className={`project-disclosure${isOpen ? " is-open" : ""}`} key={project.number}>
+              <button className={`project-index-card project-index-${project.slug}`} type="button" aria-expanded={isOpen} aria-controls={detailId} onClick={() => setOpenProject(isOpen ? null : project.slug)}>
+                <div className="project-index-visual"><span className="project-number">{project.number}</span><img src={project.cardImage} alt={project.slug === "greenhouse-robot" ? (locale === "en" ? "MIRTE Master hardware used for greenhouse deployment" : "用于温室真机部署的 MIRTE Master 硬件") : project.slug === "hierarchical-motion-planning" ? (locale === "en" ? "MuJoCo bartender workspace and mobile manipulator goal positions" : "MuJoCo 酒吧场景与移动操作机器人目标位置") : project.imageAlt} /></div>
+                <div className="project-index-copy">
+                  <p className="project-type">{project.type}</p><h3>{project.title}</h3><p className="project-summary">{project.summary}</p>
+                  <div className="project-index-evidence">{project.stats.slice(0, 2).map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
+                  <div className="project-index-footer"><div className="tag-row">{project.stack.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div><b>{isOpen ? (locale === "en" ? "Collapse details ↑" : "收起项目详情 ↑") : (locale === "en" ? "Expand details ↓" : "展开项目详情 ↓")}</b></div>
+                </div>
+              </button>
+
+              <div className="project-inline-details" id={detailId} hidden={!isOpen}>
+                <section className="project-inline-context">
+                  <div><p className="section-kicker">{locale === "en" ? `Project ${project.number} · Context` : `项目 ${project.number} · 背景`}</p><h4>{locale === "en" ? "From problem to system" : "从问题到系统"}</h4><p>{detail.overview}</p></div>
+                  <div className="project-inline-story"><article><span>{locale === "en" ? "The challenge" : "核心挑战"}</span><p>{detail.challenge}</p></article><article><span>{locale === "en" ? "Technical approach" : "技术路线"}</span><p>{detail.approach}</p></article></div>
+                </section>
+
+                <section className="project-inline-contribution"><div><p className="section-kicker">{locale === "en" ? "My contribution" : "个人贡献"}</p><h4>{detail.contributionTitle}</h4><div className="tag-row">{detail.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div><ol>{detail.contributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol></section>
+
+                {gallery.length > 0 && <section className="project-inline-gallery"><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署"}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={index === gallery.length - 1 && gallery.length % 2 === 1 ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
+
+                <section className="project-inline-outcome"><div><p className="section-kicker">{locale === "en" ? "Outcome" : "项目结果"}</p><h4>{locale === "en" ? "What the work demonstrates" : "这个项目证明了什么"}</h4></div><div><ul>{detail.results.map((result) => <li key={result}>{result}</li>)}</ul><aside><span>{locale === "en" ? "Limits & next step" : "局限与下一步"}</span><p>{detail.limitations}</p></aside></div></section>
+
+                <button className="project-inline-collapse" type="button" onClick={() => setOpenProject(null)}>{locale === "en" ? "Collapse project" : "收起项目"} ↑</button>
+              </div>
+            </article>;
+          })}
         </div>
       </section>
 
