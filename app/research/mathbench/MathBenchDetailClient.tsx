@@ -23,22 +23,21 @@ const content = {
       ["Circular evaluation", "Multiple-choice options are rotated across repeated trials; a question counts as correct only when every rotation is answered correctly."],
     ],
     contributionTitle: "My contribution",
-    contributionIntro: "I worked across benchmark design and evaluation infrastructure, connecting the research idea to a reproducible model-comparison pipeline.",
+    contributionIntro: "I owned the path from raw-data discovery to a labeled, runnable benchmark: sourcing, cleaning, taxonomy design and evaluation delivery.",
     contributions: [
-      "Contributed to the hierarchical benchmark design and the organization of theoretical and application-oriented questions.",
-      "Built the MathBench evaluation pipeline in OpenCompass, including dataset configuration, inference and result aggregation.",
-      "Evaluated more than 30 representative open- and closed-source models across difficulty, language and question type.",
-      "Used cross-language compression analysis to trace an InternLM2 Russian-tokenization anomaly and supported validation of the fix.",
+      "Sourced heterogeneous mathematics data from AMC competitions, Gaokao and postgraduate entrance examinations, plus K–12 textbook theory, spanning both conceptual knowledge and worked problems.",
+      "Cleaned, deduplicated and normalized the collected material, standardizing question text, answer choices, solutions and bilingual formatting for reliable evaluation.",
+      "Designed and applied a structured annotation taxonomy across educational stage, theory or application, subject area, topic, language and source, then quality-checked labels and samples.",
+      "Integrated the curated benchmark into OpenCompass, completed dataset configuration, inference and result aggregation, and systematically evaluated 30+ open- and closed-source models.",
     ],
     findingsTitle: "What the benchmark revealed",
-    findingsIntro: "The plots make the benchmark useful as a diagnostic tool: difficulty, scale and language each expose a different weakness that a single aggregate score would miss.",
+    findingsIntro: "Two core views show why the curated data and labels matter: they turn a model score into an interpretable capability profile.",
     captions: [
       "Average application performance drops sharply as questions move from primary to middle, high-school and college levels.",
-      "Increasing parameter count helps within model families, but model size alone does not explain mathematical proficiency.",
       "Chinese and English scores can diverge substantially for the same model, motivating explicit bilingual reporting.",
     ],
     takeaway: "The main takeaway",
-    takeawayText: "Leading models often look strong on elementary mathematics while still showing steep degradation at advanced stages. Theory scores and application scores can also diverge, so a model that recognizes a concept may not reliably use it. MathBench turns those differences into a structured capability profile.",
+    takeawayText: "Performance falls sharply beyond primary mathematics, while Chinese and English gaps vary by model. MathBench makes those differences traceable through a cleaned, labeled and reproducible evaluation pipeline—not just a single leaderboard score.",
     linksTitle: "Read, reproduce, compare",
     linksText: "The paper, dataset and OpenCompass configuration are publicly available for reproducible evaluation.",
   },
@@ -60,22 +59,21 @@ const content = {
       ["循环评测", "多次轮换选择题选项顺序，只有每次都回答正确，题目才被判定为正确。"],
     ],
     contributionTitle: "我的贡献",
-    contributionIntro: "我的工作横跨基准设计与评测基础设施，把研究思路落实成可复现的模型对比流程。",
+    contributionIntro: "我完整参与了从原始数据搜集到可运行评测基准的落地过程：数据搜集、清洗、标签体系设计与评测交付。",
     contributions: [
-      "参与分层数学基准设计，并组织理论型问题与应用型问题的结构。",
-      "在 OpenCompass 中搭建 MathBench 评测流水线，包括数据配置、推理与结果汇总。",
-      "围绕难度、语言和问题类型，对 30+ 个开源与闭源代表模型进行系统评测。",
-      "通过跨语言压缩率分析定位 InternLM2 俄语分词器异常，并协助完成修复验证。",
+      "搜集 AMC 数学竞赛、高考、研究生入学考试题目及 K–12 教科书理论知识等异构数据，覆盖概念知识与应用型问题。",
+      "对大规模原始数据进行清洗、去重与格式规范，统一题干、选项、答案、解析和中英文表达，使其能够稳定进入评测流程。",
+      "建立并执行多层标签体系，按教育阶段、理论或应用、学科领域、知识主题、语言与数据来源完成标注，并抽检标签和样本质量。",
+      "将整理后的 MathBench 接入 OpenCompass，完成数据配置、推理与结果汇总，并对 30+ 个开源和闭源代表模型开展系统评测。",
     ],
     findingsTitle: "基准揭示了什么",
-    findingsIntro: "这些图表让 MathBench 成为诊断工具：难度、模型规模和语言分别揭示单一平均分无法反映的能力短板。",
+    findingsIntro: "两个核心视角体现了数据清洗与标签体系的价值：将模型分数转化为可解释的能力画像。",
     captions: [
       "随着题目从小学进入初中、高中和大学阶段，模型的平均应用能力明显下降。",
-      "模型规模在同一模型家族内通常带来提升，但参数量并不能单独解释数学能力。",
       "同一模型的中文与英文成绩可能存在明显差异，因此需要显式报告双语表现。",
     ],
     takeaway: "核心结论",
-    takeawayText: "领先模型在基础数学上可能表现很好，但进入高难度阶段后仍会快速下降；理论知识得分与应用能力得分也可能分离，说明“知道概念”并不等于“能稳定使用”。MathBench 将这些差异组织成结构化能力画像。",
+    takeawayText: "模型表现从小学阶段之后明显下降，且中英文差异因模型而异。MathBench 通过经过清洗、标注且可复现的评测流程，使这些差异可以被追踪和解释，而不只是给出一个排行榜分数。",
     linksTitle: "阅读、复现与比较",
     linksText: "论文、数据集与 OpenCompass 评测配置均已公开，可用于复现实验。",
   },
@@ -136,7 +134,7 @@ export default function MathBenchDetailClient() {
         </section>
 
         <section className="research-contribution">
-          <div><p className="detail-section-label">03 / {t.contributionTitle}</p><h2>{t.contributionTitle}</h2><p>{t.contributionIntro}</p></div>
+          <div><p className="detail-section-label">03 / {t.contributionTitle}</p><h2>{t.contributionTitle}</h2><p>{t.contributionIntro}</p><figure className="research-taxonomy-figure"><img src="/academic/mathbench-taxonomy.png" alt={locale === "en" ? "MathBench hierarchical annotation taxonomy" : "MathBench 分层标签体系"} /><figcaption>{locale === "en" ? "The annotation taxonomy connects educational stage, subject area and topic." : "标签体系连接教育阶段、学科领域与知识主题。"}</figcaption></figure></div>
           <ol>{t.contributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol>
         </section>
 
@@ -145,9 +143,8 @@ export default function MathBenchDetailClient() {
           <div className="research-chart-grid">
             {[
               ["/academic/mathbench-stage-results.png", "Average model performance across five MathBench difficulty stages"],
-              ["/academic/mathbench-model-scale.png", "Model parameter count compared with average MathBench score"],
               ["/academic/mathbench-bilingual.png", "Chinese and English MathBench performance by model"],
-            ].map(([src, alt], index) => <figure key={src} className={index === 0 ? "chart-wide" : ""}><div><img src={src} alt={alt} /></div><figcaption><span>0{index + 1}</span>{t.captions[index]}</figcaption></figure>)}
+            ].map(([src, alt], index) => <figure key={src}><div><img src={src} alt={alt} /></div><figcaption><span>0{index + 1}</span>{t.captions[index]}</figcaption></figure>)}
           </div>
           <div className="research-takeaway"><span>{t.takeaway}</span><p>{t.takeawayText}</p></div>
         </section>
