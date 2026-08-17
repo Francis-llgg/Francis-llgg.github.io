@@ -9,7 +9,6 @@ const routes = [
   "/projects/greenhouse-robot",
   "/projects/hierarchical-motion-planning",
   "/projects/camera-radar-bev-fusion",
-  "/research/mathbench",
 ];
 
 await rm(outputRoot, { recursive: true, force: true });

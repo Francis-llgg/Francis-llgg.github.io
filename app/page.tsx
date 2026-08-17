@@ -100,6 +100,33 @@ const content = {
     paperVenue: "ACL Findings · 2024",
     paperTitle: "MathBench: Evaluating the Theory and Application Proficiency of LLMs with a Hierarchical Mathematics Benchmark",
     paperAuthors: "H. Liu, Z. Zheng et al.",
+    paperExpand: "Expand case study",
+    paperCollapse: "Collapse case study",
+    paperDetailsKicker: "Case study",
+    paperDetailsTitle: "From raw mathematics data to a reproducible benchmark",
+    paperDetailsIntro: "MathBench was built as a diagnostic benchmark rather than another leaderboard number. It separates theoretical knowledge from application ability across educational stages and languages, making model weaknesses traceable.",
+    paperAxesTitle: "Benchmark design",
+    paperAxes: [
+      ["Five stages", "Arithmetic, primary, middle, high-school and college mathematics."],
+      ["Theory + application", "Foundational knowledge is evaluated separately from practical problem solving."],
+      ["Bilingual evaluation", "Chinese and English variants reveal language-dependent performance."],
+      ["Circular evaluation", "Answer choices are rotated to reduce position bias and lucky guesses."],
+    ],
+    paperContributionTitle: "My contribution",
+    paperContributionIntro: "I worked end to end—from discovering raw data to delivering a labeled, runnable evaluation benchmark.",
+    paperContributions: [
+      "Sourced heterogeneous mathematics data from AMC competitions, Gaokao and postgraduate entrance examinations, plus K–12 textbook theory, spanning conceptual knowledge and worked problems.",
+      "Cleaned, deduplicated and normalized the collected material, standardizing question text, answer choices, solutions and bilingual formatting for reliable evaluation.",
+      "Designed and applied a structured annotation taxonomy across educational stage, theory or application, subject area, topic, language and source, then quality-checked labels and samples.",
+      "Integrated the curated benchmark into OpenCompass, completed dataset configuration, inference and result aggregation, and systematically evaluated 30+ open- and closed-source models.",
+    ],
+    paperFindingsTitle: "Core findings",
+    paperFindingsIntro: "The cleaned data and structured labels turn a single model score into an interpretable capability profile.",
+    paperCaptions: [
+      "Application performance drops sharply beyond primary mathematics.",
+      "Chinese and English performance gaps vary substantially by model.",
+    ],
+    paperTakeaway: "MathBench makes model weaknesses traceable through a cleaned, labeled and reproducible evaluation pipeline—not just a single leaderboard score.",
     skillTitle: "Working toolkit",
     skillGroups: [
       ["Learning", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"],
@@ -147,6 +174,33 @@ const content = {
     paperVenue: "ACL Findings · 2024",
     paperTitle: "MathBench：基于分层数学基准评估大语言模型的理论与应用能力",
     paperAuthors: "H. Liu, Z. Zheng et al.",
+    paperExpand: "展开论文详情",
+    paperCollapse: "收起论文详情",
+    paperDetailsKicker: "论文详情",
+    paperDetailsTitle: "从原始数学数据到可复现的评测基准",
+    paperDetailsIntro: "MathBench 的目标不是再提供一个排行榜数字，而是构建具有诊断意义的数学能力基准。它按教育阶段和语言区分理论知识与应用能力，使模型的能力短板可以被定位和解释。",
+    paperAxesTitle: "基准设计",
+    paperAxes: [
+      ["五级难度", "覆盖基础运算、小学、初中、高中与大学数学。"],
+      ["理论 + 应用", "分别评估基础理论知识与实际问题求解能力。"],
+      ["双语评测", "通过中文与英文版本呈现模型的语言依赖差异。"],
+      ["循环评测", "轮换选择题选项，减少位置偏差与偶然猜测。"],
+    ],
+    paperContributionTitle: "我的贡献",
+    paperContributionIntro: "我完整参与了从原始数据搜集到可运行评测基准的落地过程。",
+    paperContributions: [
+      "搜集 AMC 数学竞赛、高考、研究生入学考试题目及 K–12 教科书理论知识等异构数据，覆盖概念知识与应用型问题。",
+      "对大规模原始数据进行清洗、去重与格式规范，统一题干、选项、答案、解析和中英文表达，使其能够稳定进入评测流程。",
+      "建立并执行多层标签体系，按教育阶段、理论或应用、学科领域、知识主题、语言与数据来源完成标注，并抽检标签和样本质量。",
+      "将整理后的 MathBench 接入 OpenCompass，完成数据配置、推理与结果汇总，并对 30+ 个开源和闭源代表模型开展系统评测。",
+    ],
+    paperFindingsTitle: "核心结论",
+    paperFindingsIntro: "经过清洗的数据与结构化标签，将单一分数转化为可以解释的模型能力画像。",
+    paperCaptions: [
+      "模型的应用能力在小学阶段之后明显下降。",
+      "同一模型的中文与英文表现可能存在显著差异。",
+    ],
+    paperTakeaway: "MathBench 通过经过清洗、标注且可复现的评测流程，使模型能力短板能够被追踪和解释，而不只是给出一个排行榜分数。",
     skillTitle: "技术栈",
     skillGroups: [["机器学习", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"], ["机器人", "ROS2 · Nav2 · Gazebo · MuJoCo · PCL · OpenCV"], ["编程语言", "Python · C / C++ · MATLAB"], ["系统工具", "Linux · Git · CUDA · JAX"]],
     contactKicker: "联系",
@@ -158,6 +212,7 @@ const content = {
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("en");
+  const [paperOpen, setPaperOpen] = useState(false);
   const t = content[locale];
   const experienceEvidence = locale === "en"
     ? [
@@ -256,13 +311,29 @@ export default function Home() {
         <div className="section-heading compact">
           <div><p className="section-kicker">{t.researchKicker}</p><h2>{locale === "en" ? "Publication" : "论文发表"}</h2></div>
         </div>
-        <article className="publication-card">
-          <a className="publication-card-link" href={`/research/mathbench${locale === "zh" ? "?lang=zh" : ""}`} aria-label={locale === "en" ? "Read the MathBench research case study" : "查看 MathBench 论文详情"} />
-          <div className="publication-figure"><img src="/academic/mathbench-overview.png" alt="MathBench hierarchical benchmark overview" /></div>
-          <div className="publication-copy">
-            <p>{t.paperVenue}</p><h3>{t.paperTitle}</h3><span>{t.paperAuthors}</span>
-            <div className="publication-facts"><div><strong>5</strong><span>{locale === "en" ? "difficulty stages" : "难度阶段"}</span></div><div><strong>3,709</strong><span>{locale === "en" ? "bilingual questions" : "双语题目"}</span></div><div><strong>30+</strong><span>{locale === "en" ? "models evaluated" : "评测模型"}</span></div></div>
-            <div className="publication-links"><a href={`/research/mathbench${locale === "zh" ? "?lang=zh" : ""}`}>{locale === "en" ? "Read case study" : "查看论文详情"} ↗</a><a href="https://aclanthology.org/2024.findings-acl.411/" target="_blank" rel="noreferrer">ACL Anthology ↗</a><a href="https://github.com/open-compass/MathBench" target="_blank" rel="noreferrer">{locale === "en" ? "Project" : "项目代码"} ↗</a></div>
+        <article className={`publication-disclosure${paperOpen ? " is-open" : ""}`}>
+          <button className="publication-card" type="button" aria-expanded={paperOpen} aria-controls="mathbench-details" onClick={() => setPaperOpen(!paperOpen)}>
+            <div className="publication-figure"><img src="/academic/mathbench-overview.png" alt="MathBench hierarchical benchmark overview" /></div>
+            <div className="publication-copy">
+              <p>{t.paperVenue}</p><h3>{t.paperTitle}</h3><span>{t.paperAuthors}</span>
+              <div className="publication-facts"><div><strong>5</strong><span>{locale === "en" ? "difficulty stages" : "难度阶段"}</span></div><div><strong>3,709</strong><span>{locale === "en" ? "bilingual questions" : "双语题目"}</span></div><div><strong>30+</strong><span>{locale === "en" ? "models evaluated" : "评测模型"}</span></div></div>
+              <span className="publication-expand-cue"><span>{paperOpen ? t.paperCollapse : t.paperExpand}</span><b aria-hidden="true">{paperOpen ? "↑" : "↓"}</b></span>
+            </div>
+          </button>
+
+          <div className="publication-details" id="mathbench-details" hidden={!paperOpen}>
+            <header className="publication-detail-lead"><div><p className="section-kicker">{t.paperDetailsKicker}</p><h3>{t.paperDetailsTitle}</h3></div><p>{t.paperDetailsIntro}</p></header>
+
+            <section className="publication-detail-axes"><h4>{t.paperAxesTitle}</h4><div>{t.paperAxes.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><strong>{title}</strong><p>{text}</p></article>)}</div></section>
+
+            <section className="publication-detail-contribution">
+              <div><h4>{t.paperContributionTitle}</h4><p>{t.paperContributionIntro}</p><figure><img src="/academic/mathbench-taxonomy.png" alt={locale === "en" ? "MathBench hierarchical annotation taxonomy" : "MathBench 分层标签体系"} /><figcaption>{locale === "en" ? "Annotation taxonomy: educational stage, subject area and topic" : "标签体系：教育阶段、学科领域与知识主题"}</figcaption></figure></div>
+              <ol>{t.paperContributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol>
+            </section>
+
+            <section className="publication-detail-findings"><div className="publication-detail-findings-heading"><div><h4>{t.paperFindingsTitle}</h4><p>{t.paperFindingsIntro}</p></div></div><div className="publication-detail-charts">{[["/academic/mathbench-stage-results.png", "MathBench performance across difficulty stages"], ["/academic/mathbench-bilingual.png", "Chinese and English MathBench performance"]].map(([src, alt], index) => <figure key={src}><div><img src={src} alt={alt} /></div><figcaption><span>0{index + 1}</span>{t.paperCaptions[index]}</figcaption></figure>)}</div><p className="publication-detail-takeaway">{t.paperTakeaway}</p></section>
+
+            <div className="publication-detail-links"><a href="https://aclanthology.org/2024.findings-acl.411/" target="_blank" rel="noreferrer">ACL Anthology ↗</a><a href="https://github.com/open-compass/MathBench" target="_blank" rel="noreferrer">{locale === "en" ? "Code & dataset" : "代码与数据"} ↗</a><button type="button" onClick={() => setPaperOpen(false)}>{t.paperCollapse} ↑</button></div>
           </div>
         </article>
       </section>

@@ -5,7 +5,6 @@ import test from "node:test";
 const sourceFiles = [
   new URL("../app/page.tsx", import.meta.url),
   new URL("../app/project-data.ts", import.meta.url),
-  new URL("../app/research/mathbench/MathBenchDetailClient.tsx", import.meta.url),
 ];
 
 function extractObject(source, openingBrace) {
@@ -87,6 +86,6 @@ test("localized content contains no long opposite-language passages", async () =
     }
   }
 
-  assert.ok(englishBlockCount >= 5, "Expected English content for the home page, projects and publication");
-  assert.ok(chineseBlockCount >= 5, "Expected Chinese content for the home page, projects and publication");
+  assert.ok(englishBlockCount >= 4, "Expected English content for the home page, projects and publication");
+  assert.ok(chineseBlockCount >= 4, "Expected Chinese content for the home page, projects and publication");
 });
