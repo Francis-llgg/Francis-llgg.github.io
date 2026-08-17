@@ -136,7 +136,7 @@ const content = {
     ],
     experienceKicker: "实习经历",
     roles: [
-      { date: "2026.07 — 至今", org: "Sunrising Lab", role: "世界模型算法实习生", text: "复现并评测 V-JEPA 2 在 IntPhys 2、Diving 数据集上的表现，分析潜空间动力学、时序预测和物理一致性表征；复现 PH-Dreamer，并探索将哈密顿结构与物理先验引入视频潜空间状态建模。" },
+      { date: "2026.07 — 至今", org: "光象（北京）科技有限公司", role: "世界模型算法实习生", text: "复现并评测 V-JEPA 2 在 IntPhys 2、Diving 数据集上的表现，分析潜空间动力学、时序预测和物理一致性表征；复现 PH-Dreamer，并探索将哈密顿结构与物理先验引入视频潜空间状态建模。" },
       { date: "2024.09 — 2025.02", org: "西门子（中国）· 数字化工业集团", role: "智能制造实习生", text: "基于多源差旅数据构建客户碳足迹计算模型，完成数据清洗、规则建模与可视化部署。" },
       { date: "2023.12 — 2024.08", org: "上海人工智能实验室 · 大模型中心", role: "大语言模型算法实习生", text: "设计 MathBench 数学推理评测体系，基于 OpenCompass 搭建评测流水线并完成 30+ 主流模型对比；通过跨语言压缩率分析定位 InternLM2 俄语 tokenizer 异常，并协助完成修复验证。" },
       { date: "2022.07 — 2022.10", org: "中科院自动化所 · 视觉计算组", role: "视觉模型算法实习生", text: "复现 ViT 与 Swin Transformer 核心模块，并完成 UperNet 语义分割框架从 PyTorch 到 MindSpore 的迁移验证。" },
