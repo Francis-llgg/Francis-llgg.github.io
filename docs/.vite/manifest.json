@@ -1,6 +1,6 @@
 {
   "../portfolio-site/node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs+plugin-react@6.0.2_vite@8.0.13_@types+node@22.19.19_esbuild_93f6fd6c708956198cb05a5cfe3fd3ab/node_modules/vinext/dist/shims/layout-segment-context.js": {
-    "file": "_next/static/chunks/layout-segment-context-icjmeS4I.js",
+    "file": "_next/static/chunks/layout-segment-context-sAjO52Kq.js",
     "name": "layout-segment-context",
     "src": "../portfolio-site/node_modules/.pnpm/vinext@1.0.0-beta.2_@vitejs+plugin-react@6.0.2_vite@8.0.13_@types+node@22.19.19_esbuild_93f6fd6c708956198cb05a5cfe3fd3ab/node_modules/vinext/dist/shims/layout-segment-context.js",
     "isDynamicEntry": true,
@@ -32,7 +32,7 @@
     ]
   },
   "app/projects/[slug]/ProjectDetailClient.tsx": {
-    "file": "_next/static/chunks/ProjectDetailClient-CjD2eftX.js",
+    "file": "_next/static/chunks/ProjectDetailClient-DYSUH5po.js",
     "name": "ProjectDetailClient",
     "src": "app/projects/[slug]/ProjectDetailClient.tsx",
     "isDynamicEntry": true,
@@ -42,7 +42,7 @@
     ]
   },
   "app/research/mathbench/MathBenchDetailClient.tsx": {
-    "file": "_next/static/chunks/MathBenchDetailClient-Cg4GP0I9.js",
+    "file": "_next/static/chunks/MathBenchDetailClient-DKUw9VOP.js",
     "name": "MathBenchDetailClient",
     "src": "app/research/mathbench/MathBenchDetailClient.tsx",
     "isDynamicEntry": true,
@@ -52,7 +52,7 @@
     ]
   },
   "virtual:vinext-app-browser-entry": {
-    "file": "_next/static/chunks/index-D3qeXa2Q.js",
+    "file": "_next/static/chunks/index-CajZ3GIT.js",
     "name": "index",
     "src": "virtual:vinext-app-browser-entry",
     "isEntry": true,

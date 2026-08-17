@@ -106,7 +106,7 @@ export default function MathBenchDetailClient() {
     <main className="research-detail-page">
       <header className="detail-header">
         <a className="wordmark" href="/" aria-label="Zilong Zheng home">ZZ<span> / 26</span></a>
-        <a className="detail-back" href={`/${locale === "zh" ? "?lang=zh" : ""}#publication`}>← {t.back}</a>
+        <a className="detail-back" href={`/${locale === "zh" ? "?lang=zh" : ""}#publication`}><span className="detail-back-icon" aria-hidden="true">←</span><span className="detail-back-label">{t.back}</span></a>
         <button className="language-toggle" type="button" onClick={toggleLocale} aria-label={t.switchAria}>{locale === "en" ? "中文" : "EN"}</button>
       </header>
 

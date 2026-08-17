@@ -38,7 +38,7 @@ export default function ProjectDetailClient({ project, nextProject }: Props) {
     <main className="project-detail-page">
       <header className="detail-header">
         <a className="wordmark" href="/" aria-label="Zilong Zheng home">ZZ<span> / 26</span></a>
-        <a className="detail-back" href={homeHref}>← {locale === "en" ? "All projects" : "返回项目列表"}</a>
+        <a className="detail-back" href={homeHref}><span className="detail-back-icon" aria-hidden="true">←</span><span className="detail-back-label">{locale === "en" ? "All projects" : "返回项目列表"}</span></a>
         <button className="language-toggle" type="button" onClick={toggleLocale} aria-label={locale === "en" ? "Switch to Chinese" : "切换到英文"}>{locale === "en" ? "中文" : "EN"}</button>
       </header>
 
