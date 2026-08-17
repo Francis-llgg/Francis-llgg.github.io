@@ -91,7 +91,7 @@ const content = {
     ],
     educationLabel: "Education",
     education: [
-      ["TU Delft", "MSc Robotics", "2025 — 2027", "World models · Multimodal perception"],
+      ["Delft University of Technology", "MSc Robotics", "2025 — 2027", "World models · Multimodal perception"],
       ["Beihang University", "BSc Automation", "2019 — 2024", "GPA 89.61 / 100 · Rank 36 / 242"],
     ],
     researchKicker: "Research & publication",
