@@ -24,12 +24,12 @@ const content = {
     projects: [
       {
         slug: "greenhouse-robot",
-        cardImage: "/projects/greenhouse-robot-card.png",
+        cardImage: "/projects/greenhouse-robot-square.jpg",
         number: "01",
         period: "Mar — Jun 2026",
         type: "Autonomous robotics · ROS2",
         title: "Greenhouse mapping, navigation & Sim2Real deployment",
-        summary: "A complete perception-to-action stack that moved from Gazebo to a MIRTE Master robot inside a 32 m² greenhouse.",
+        summary: "An eight-week delivery from system design and ROS2 integration to simulation validation and supervised deployment on a MIRTE Master robot.",
         image: "/projects/ros2-architecture.png",
         imageAlt: "ROS2 greenhouse robot software architecture",
         bullets: [
@@ -37,8 +37,8 @@ const content = {
           "Built autonomous exploration, map reuse, real-time localization and goal navigation workflows.",
           "Resolved frame drift, execution latency and narrow-aisle planning failures during hardware deployment.",
         ],
-        stats: [["Gazebo → MIRTE", "Sim2Real"], ["32 m²", "test site"], ["6", "validation scenarios"]],
-        stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "C++", "Python"],
+        stats: [["8 weeks", "design to field test"], ["6", "validation scenarios"], ["Gazebo → MIRTE", "deployment path"]],
+        stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "YOLO", "React"],
         secondary: "/projects/greenhouse-perception.png",
         secondaryAlt: "Tulip and pest perception results",
       },
@@ -162,7 +162,7 @@ const content = {
     workKicker: "工程实践",
     workTitle: "代表项目",
     projects: [
-      { slug: "greenhouse-robot", cardImage: "/projects/greenhouse-robot-card.png", number: "01", period: "2026.03 — 2026.06", type: "自主机器人 · ROS2", title: "温室自主建图、导航与 Sim2Real 真机部署", summary: "将感知、建图、规划和执行串成完整闭环，并从 Gazebo 部署到 32 m² 温室中的 MIRTE Master 真机。", image: "/projects/ros2-architecture.png", imageAlt: "ROS2 温室机器人软件架构", bullets: ["集成 TF2、LiDAR、里程计、SLAM Toolbox、Nav2 与 Costmap。", "实现自主探索建图、地图复用、实时定位和目标点导航。", "在真机部署中解决坐标系漂移、执行延迟及窄通道规划失败。"], stats: [["Gazebo → MIRTE", "仿真到真机"], ["32 m²", "测试场地"], ["6", "验证场景"]], stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "C++", "Python"], secondary: "/projects/greenhouse-perception.png", secondaryAlt: "郁金香和害虫检测结果" },
+      { slug: "greenhouse-robot", cardImage: "/projects/greenhouse-robot-square.jpg", number: "01", period: "2026.03 — 2026.06", type: "自主机器人 · ROS2", title: "温室自主建图、导航与 Sim2Real 真机部署", summary: "在八周内完成从系统设计、ROS2 集成、仿真验证到 MIRTE 真机监督部署的完整交付。", image: "/projects/ros2-architecture.png", imageAlt: "ROS2 温室机器人软件架构", bullets: ["集成 TF2、LiDAR、里程计、SLAM Toolbox、Nav2 与 Costmap。", "实现自主探索建图、地图复用、实时定位和目标点导航。", "在真机部署中解决坐标系漂移、执行延迟及窄通道规划失败。"], stats: [["8 周", "设计到现场验证"], ["6", "验证场景"], ["Gazebo → MIRTE", "部署路径"]], stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "YOLO", "React"], secondary: "/projects/greenhouse-perception.png", secondaryAlt: "郁金香和害虫检测结果" },
       { slug: "hierarchical-motion-planning", cardImage: "/projects/motion-environment.png", number: "02", period: "2025.11 — 2026.01", type: "规划与控制 · MuJoCo / JAX", title: "10-DoF 移动操作机器人的分层运动规划", summary: "结合 Bi-Informed RRT* 与 GPU 加速 MPPI，实现连续、平滑且满足动力学约束的无碰撞运动。", image: "/projects/motion-path.png", imageAlt: "Bi-Informed RRT 星搜索树与路径", bullets: ["在复杂酒吧机器人场景中实现全局可行路径搜索。", "设计融合目标跟踪、控制代价、动力学和碰撞惩罚的 MPPI 代价函数。", "对比 RRT* 变体，并在 MuJoCo 中完成闭环控制调参与验证。"], stats: [["10-DoF", "机器人状态"], ["RRT* + MPPI", "分层架构"], ["GPU", "采样控制"]], stack: ["MuJoCo", "JAX", "MPPI", "Bi-Informed RRT*", "Python"], secondary: "/projects/motion-metrics.png", secondaryAlt: "RRT 星规划成功率与路径代价对比" },
       { slug: "camera-radar-bev-fusion", cardImage: "/projects/bev-framework-source.png", number: "03", period: "2026.02 — 2026.04", type: "多模态感知 · 3D 检测", title: "相机-毫米波雷达 BEV 融合 3D 目标检测", summary: "基于 CenterPoint，在鸟瞰空间融合视觉特征与多帧毫米波雷达特征。", image: "/projects/bev-framework-source.png", imageAlt: "项目原始的相机-雷达 CenterPoint 融合框架", bullets: ["使用稀疏投影深度提示构建雷达引导的相机 BEV 模块。", "引入多帧 Radar Sweep 以及 Doppler、速度和归一化 RCS 特征。", "在 View-of-Delft 上相对基线提升 34.8% 的 BEV mAP。"], stats: [["+34.8%", "BEV mAP 相对提升"], ["3 帧", "时序雷达"], ["3 类", "检测头"]], stack: ["PyTorch", "CenterPoint", "CUDA", "Radar", "Camera", "View-of-Delft"], secondary: "/projects/bev-framework-source.png", secondaryAlt: "CenterPoint 项目框架" },
     ],
@@ -380,7 +380,7 @@ export default function Home() {
 
                 <section className="project-inline-contribution"><div><p className="section-kicker">{locale === "en" ? "My contribution" : "个人贡献"}</p><h4>{detail.contributionTitle}</h4><div className="tag-row">{detail.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div><ol>{detail.contributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol></section>
 
-                {gallery.length > 0 && <section className="project-inline-gallery"><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署"}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={index === gallery.length - 1 && gallery.length % 2 === 1 ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
+                {gallery.length > 0 && <section className="project-inline-gallery"><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{project.slug === "greenhouse-robot" ? (locale === "en" ? "Plan, system design and field results" : "计划、系统设计与现场成果") : (locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署")}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={item.wide || (index === gallery.length - 1 && gallery.length % 2 === 1) ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
 
                 <section className="project-inline-outcome"><div><p className="section-kicker">{locale === "en" ? "Outcome" : "项目结果"}</p><h4>{locale === "en" ? "What the work demonstrates" : "这个项目证明了什么"}</h4></div><div><ul>{detail.results.map((result) => <li key={result}>{result}</li>)}</ul><aside><span>{locale === "en" ? "Limits & next step" : "局限与下一步"}</span><p>{detail.limitations}</p></aside></div></section>
 
