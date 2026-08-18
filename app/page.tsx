@@ -151,7 +151,6 @@ const content = {
     ],
     contactKicker: "Contact",
     contactTitle: "Let’s build robots that understand what happens next",
-    emailCta: "Start a conversation",
     footer: "Designed from research notes, code and real-world tests.",
   },
   zh: {
@@ -234,7 +233,6 @@ const content = {
     skillGroups: [["机器学习", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"], ["机器人", "ROS2 · Nav2 · Gazebo · MuJoCo · PCL · OpenCV"], ["编程语言", "Python · C / C++ · MATLAB"], ["系统工具", "Linux · Git · CUDA · JAX"]],
     contactKicker: "联系",
     contactTitle: "一起构建能够理解“下一步会发生什么”的机器人",
-    emailCta: "开始交流",
     footer: "基于真实研究、代码与真机实验构建。",
   },
 };
@@ -433,7 +431,6 @@ export default function Home() {
         <p className="section-kicker">{t.contactKicker}</p>
         <h2>{t.contactTitle}</h2>
         <div className="contact-actions">
-          <a className="contact-email" href="mailto:franciszheng221@gmail.com"><span>{t.emailCta}</span><strong>franciszheng221@gmail.com</strong><b>↗</b></a>
           <div className="footer-link-grid">
             {[
               ["GitHub", "https://github.com/Francis-llgg"],
