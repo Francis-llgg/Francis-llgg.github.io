@@ -104,7 +104,7 @@ export const projectRecords: ProjectRecord[] = [
   },
   {
     slug: "hierarchical-motion-planning",
-    number: "02",
+    number: "03",
     cover: "/projects/motion-environment.png",
     en: {
       period: "Nov 2025 — Jan 2026",
@@ -171,7 +171,7 @@ export const projectRecords: ProjectRecord[] = [
   },
   {
     slug: "camera-radar-bev-fusion",
-    number: "03",
+    number: "02",
     cover: "/projects/view-of-delft-car.jpg",
     en: {
       period: "Feb — Apr 2026",

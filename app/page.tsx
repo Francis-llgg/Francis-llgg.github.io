@@ -45,7 +45,7 @@ const content = {
       {
         slug: "hierarchical-motion-planning",
         cardImage: "/projects/motion-environment.png",
-        number: "02",
+        number: "03",
         period: "Nov 2025 — Jan 2026",
         type: "Planning & control · MuJoCo / JAX",
         title: "Hierarchical motion planning for a 10-DoF mobile manipulator",
@@ -65,7 +65,7 @@ const content = {
       {
         slug: "camera-radar-bev-fusion",
         cardImage: "/projects/view-of-delft-car.jpg",
-        number: "03",
+        number: "02",
         period: "Feb — Apr 2026",
         type: "Radar-camera perception · LiDAR-free 3D detection",
         title: "Radar-guided camera BEV fusion for robust 3D detection",
@@ -163,8 +163,8 @@ const content = {
     workTitle: "代表项目",
     projects: [
       { slug: "greenhouse-robot", cardImage: "/projects/greenhouse-robot-square.jpg", number: "01", period: "2026.03 — 2026.06", type: "自主机器人 · ROS2", title: "温室自主建图、导航与 Sim2Real 真机部署", summary: "在八周内完成从系统设计、ROS2 集成、仿真验证到 MIRTE 真机监督部署的完整交付。", image: "/projects/ros2-architecture.png", imageAlt: "ROS2 温室机器人软件架构", bullets: ["负责建图定位：扫描过滤、SLAM Toolbox 配置与可复用栅格地图。", "将植物行提取、Nav2 任务执行和植物感知结果接入同一 ROS2 系统。", "在 Gazebo 验证无碰撞任务，并将可监督流程部署到 MIRTE 真机。"], stats: [["8 周", "设计到现场验证"], ["6", "验证场景"], ["Gazebo → MIRTE", "部署路径"]], stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "YOLO", "React"], secondary: "/projects/greenhouse-perception.png", secondaryAlt: "郁金香和害虫检测结果" },
-      { slug: "hierarchical-motion-planning", cardImage: "/projects/motion-environment.png", number: "02", period: "2025.11 — 2026.01", type: "规划与控制 · MuJoCo / JAX", title: "10-DoF 移动操作机器人的分层运动规划", summary: "结合 Bi-Informed RRT* 与 GPU 加速 MPPI，实现连续、平滑且满足动力学约束的无碰撞运动。", image: "/projects/motion-path.png", imageAlt: "Bi-Informed RRT 星搜索树与路径", bullets: ["在复杂酒吧机器人场景中实现全局可行路径搜索。", "设计融合目标跟踪、控制代价、动力学和碰撞惩罚的 MPPI 代价函数。", "对比 RRT* 变体，并在 MuJoCo 中完成闭环控制调参与验证。"], stats: [["10-DoF", "机器人状态"], ["RRT* + MPPI", "分层架构"], ["GPU", "采样控制"]], stack: ["MuJoCo", "JAX", "MPPI", "Bi-Informed RRT*", "Python"], secondary: "/projects/motion-metrics.png", secondaryAlt: "RRT 星规划成功率与路径代价对比" },
-      { slug: "camera-radar-bev-fusion", cardImage: "/projects/view-of-delft-car.jpg", number: "03", period: "2026.02 — 2026.04", type: "雷达–相机感知 · 无 LiDAR 3D 检测", title: "雷达引导的相机 BEV 融合 3D 目标检测", summary: "三帧自车运动对齐雷达引导单目视觉特征升维到 BEV，相对 Radar-only 基线实现 34.8% 的 BEV mAP 提升。", image: "/projects/bev-model-structure.png", imageAlt: "用于 View-of-Delft 感知任务的代尔夫特理工研究车辆", bullets: ["将三帧对齐雷达构建为 11 维时序点表示。", "使用稀疏雷达深度提示与 8 档深度置信度升维 ResNet-50 特征。", "交付配置一致的三类检测推理链路，并实现 34.8% 的 BEV mAP 相对提升。"], stats: [["+34.8%", "BEV mAP 相对提升"], ["3 × 11 维", "时序雷达"], ["8 档", "深度升维"]], stack: ["PyTorch", "CenterPoint", "ResNet-50", "毫米波雷达", "View-of-Delft"], secondary: "/projects/bev-framework-source.png", secondaryAlt: "CenterPoint 项目框架" },
+      { slug: "hierarchical-motion-planning", cardImage: "/projects/motion-environment.png", number: "03", period: "2025.11 — 2026.01", type: "规划与控制 · MuJoCo / JAX", title: "10-DoF 移动操作机器人的分层运动规划", summary: "结合 Bi-Informed RRT* 与 GPU 加速 MPPI，实现连续、平滑且满足动力学约束的无碰撞运动。", image: "/projects/motion-path.png", imageAlt: "Bi-Informed RRT 星搜索树与路径", bullets: ["在复杂酒吧机器人场景中实现全局可行路径搜索。", "设计融合目标跟踪、控制代价、动力学和碰撞惩罚的 MPPI 代价函数。", "对比 RRT* 变体，并在 MuJoCo 中完成闭环控制调参与验证。"], stats: [["10-DoF", "机器人状态"], ["RRT* + MPPI", "分层架构"], ["GPU", "采样控制"]], stack: ["MuJoCo", "JAX", "MPPI", "Bi-Informed RRT*", "Python"], secondary: "/projects/motion-metrics.png", secondaryAlt: "RRT 星规划成功率与路径代价对比" },
+      { slug: "camera-radar-bev-fusion", cardImage: "/projects/view-of-delft-car.jpg", number: "02", period: "2026.02 — 2026.04", type: "雷达–相机感知 · 无 LiDAR 3D 检测", title: "雷达引导的相机 BEV 融合 3D 目标检测", summary: "三帧自车运动对齐雷达引导单目视觉特征升维到 BEV，相对 Radar-only 基线实现 34.8% 的 BEV mAP 提升。", image: "/projects/bev-model-structure.png", imageAlt: "用于 View-of-Delft 感知任务的代尔夫特理工研究车辆", bullets: ["将三帧对齐雷达构建为 11 维时序点表示。", "使用稀疏雷达深度提示与 8 档深度置信度升维 ResNet-50 特征。", "交付配置一致的三类检测推理链路，并实现 34.8% 的 BEV mAP 相对提升。"], stats: [["+34.8%", "BEV mAP 相对提升"], ["3 × 11 维", "时序雷达"], ["8 档", "深度升维"]], stack: ["PyTorch", "CenterPoint", "ResNet-50", "毫米波雷达", "View-of-Delft"], secondary: "/projects/bev-framework-source.png", secondaryAlt: "CenterPoint 项目框架" },
     ],
     experienceKicker: "实习经历",
     roles: [
@@ -354,7 +354,7 @@ export default function Home() {
       <section className="work-section content-section" id="projects">
         <div className="section-heading"><div><p className="section-kicker">{t.workKicker}</p><h2>{t.workTitle}</h2></div></div>
         <div className="project-list">
-          {t.projects.map((project) => {
+          {[...t.projects].sort((a, b) => a.number.localeCompare(b.number)).map((project) => {
             const fullProject = projectRecords.find((item) => item.slug === project.slug)!;
             const detail = fullProject[locale];
             const isOpen = openProject === project.slug;
