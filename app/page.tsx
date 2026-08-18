@@ -152,7 +152,6 @@ const content = {
     contactKicker: "Contact",
     contactTitle: "Let’s build robots that understand what happens next",
     emailCta: "Start a conversation",
-    downloadResume: "Download résumé",
     footer: "Designed from research notes, code and real-world tests.",
   },
   zh: {
@@ -236,7 +235,6 @@ const content = {
     contactKicker: "联系",
     contactTitle: "一起构建能够理解“下一步会发生什么”的机器人",
     emailCta: "开始交流",
-    downloadResume: "下载英文简历",
     footer: "基于真实研究、代码与真机实验构建。",
   },
 };
@@ -438,11 +436,10 @@ export default function Home() {
           <a className="contact-email" href="mailto:franciszheng221@gmail.com"><span>{t.emailCta}</span><strong>franciszheng221@gmail.com</strong><b>↗</b></a>
           <div className="footer-link-grid">
             {[
-              ["GitHub", "https://github.com/Francis-llgg", false],
-              ["Google Scholar", "https://scholar.google.com/citations?user=GdER77kAAAAJ&hl=zh-CN&oi=sra", false],
-              ["LinkedIn", "https://www.linkedin.com/in/francis-z-07a53431a/", false],
-              [t.downloadResume, "/files/Zilong-Zheng-Resume.pdf", true],
-            ].map(([label, href, download], index) => <a href={href as string} target={download ? undefined : "_blank"} rel={download ? undefined : "noreferrer"} download={download ? "Zilong-Zheng-Resume.pdf" : undefined} key={label as string}><span>0{index + 1}</span><strong>{label}</strong><b>{download ? "↓" : "↗"}</b></a>)}
+              ["GitHub", "https://github.com/Francis-llgg"],
+              ["Google Scholar", "https://scholar.google.com/citations?user=GdER77kAAAAJ&hl=zh-CN&oi=sra"],
+              ["LinkedIn", "https://www.linkedin.com/in/francis-z-07a53431a/"],
+            ].map(([label, href], index) => <a href={href} target="_blank" rel="noreferrer" key={label}><span>0{index + 1}</span><strong>{label}</strong><b>↗</b></a>)}
           </div>
         </div>
         <div className="footer-bottom"><span>© 2026 Zilong Zheng</span><span>{t.footer}</span><a href="#top">↑ {locale === "en" ? "Top" : "顶部"}</a></div>

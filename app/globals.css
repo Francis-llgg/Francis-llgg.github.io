@@ -414,10 +414,10 @@ footer h2 { max-width:1050px; margin:20px 0 0; font-size:clamp(46px,6.5vw,90px);
 .contact-email span { color:#7b8292; font:9px var(--font-geist-mono); }
 .contact-email strong { margin-top:13px; font-size:clamp(14px,1.45vw,20px); letter-spacing:-.025em; }
 .contact-email b { position:absolute; right:24px; top:22px; font-size:17px; font-weight:500; }
-.footer-link-grid { display:grid; grid-template-columns:1fr 1fr; border:1px solid rgba(255,255,255,.24); border-radius:18px; overflow:hidden; }
+.footer-link-grid { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid rgba(255,255,255,.24); border-radius:18px; overflow:hidden; }
 .footer-link-grid a { min-height:66px; display:grid; grid-template-columns:26px 1fr auto; align-items:center; gap:12px; padding:16px 19px; border-left:1px solid rgba(255,255,255,.2); border-top:1px solid rgba(255,255,255,.2); transition:background .2s ease; }
-.footer-link-grid a:nth-child(odd) { border-left:0; }
-.footer-link-grid a:nth-child(-n+2) { border-top:0; }
+.footer-link-grid a:first-child { border-left:0; }
+.footer-link-grid a:nth-child(-n+3) { border-top:0; }
 .footer-link-grid a:hover { background:rgba(255,255,255,.08); }
 .footer-link-grid span { color:rgba(255,255,255,.45); font:8px var(--font-geist-mono); }
 .footer-link-grid strong { font-size:12px; font-weight:560; }
