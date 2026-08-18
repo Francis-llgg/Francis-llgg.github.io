@@ -33,9 +33,9 @@ const content = {
         image: "/projects/ros2-architecture.png",
         imageAlt: "ROS2 greenhouse robot software architecture",
         bullets: [
-          "Integrated TF2, LiDAR, odometry, SLAM Toolbox, Nav2 and costmaps into one closed loop.",
-          "Built autonomous exploration, map reuse, real-time localization and goal navigation workflows.",
-          "Resolved frame drift, execution latency and narrow-aisle planning failures during hardware deployment.",
+          "Owned mapping and localization: scan filtering, SLAM Toolbox and reusable occupancy maps.",
+          "Connected row extraction, Nav2 mission execution and plant-perception outputs in one ROS2 stack.",
+          "Validated collision-free missions in Gazebo and deployed a supervised workflow to MIRTE hardware.",
         ],
         stats: [["8 weeks", "design to field test"], ["6", "validation scenarios"], ["Gazebo → MIRTE", "deployment path"]],
         stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "YOLO", "React"],
@@ -162,7 +162,7 @@ const content = {
     workKicker: "工程实践",
     workTitle: "代表项目",
     projects: [
-      { slug: "greenhouse-robot", cardImage: "/projects/greenhouse-robot-square.jpg", number: "01", period: "2026.03 — 2026.06", type: "自主机器人 · ROS2", title: "温室自主建图、导航与 Sim2Real 真机部署", summary: "在八周内完成从系统设计、ROS2 集成、仿真验证到 MIRTE 真机监督部署的完整交付。", image: "/projects/ros2-architecture.png", imageAlt: "ROS2 温室机器人软件架构", bullets: ["集成 TF2、LiDAR、里程计、SLAM Toolbox、Nav2 与 Costmap。", "实现自主探索建图、地图复用、实时定位和目标点导航。", "在真机部署中解决坐标系漂移、执行延迟及窄通道规划失败。"], stats: [["8 周", "设计到现场验证"], ["6", "验证场景"], ["Gazebo → MIRTE", "部署路径"]], stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "YOLO", "React"], secondary: "/projects/greenhouse-perception.png", secondaryAlt: "郁金香和害虫检测结果" },
+      { slug: "greenhouse-robot", cardImage: "/projects/greenhouse-robot-square.jpg", number: "01", period: "2026.03 — 2026.06", type: "自主机器人 · ROS2", title: "温室自主建图、导航与 Sim2Real 真机部署", summary: "在八周内完成从系统设计、ROS2 集成、仿真验证到 MIRTE 真机监督部署的完整交付。", image: "/projects/ros2-architecture.png", imageAlt: "ROS2 温室机器人软件架构", bullets: ["负责建图定位：扫描过滤、SLAM Toolbox 配置与可复用栅格地图。", "将植物行提取、Nav2 任务执行和植物感知结果接入同一 ROS2 系统。", "在 Gazebo 验证无碰撞任务，并将可监督流程部署到 MIRTE 真机。"], stats: [["8 周", "设计到现场验证"], ["6", "验证场景"], ["Gazebo → MIRTE", "部署路径"]], stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "YOLO", "React"], secondary: "/projects/greenhouse-perception.png", secondaryAlt: "郁金香和害虫检测结果" },
       { slug: "hierarchical-motion-planning", cardImage: "/projects/motion-environment.png", number: "02", period: "2025.11 — 2026.01", type: "规划与控制 · MuJoCo / JAX", title: "10-DoF 移动操作机器人的分层运动规划", summary: "结合 Bi-Informed RRT* 与 GPU 加速 MPPI，实现连续、平滑且满足动力学约束的无碰撞运动。", image: "/projects/motion-path.png", imageAlt: "Bi-Informed RRT 星搜索树与路径", bullets: ["在复杂酒吧机器人场景中实现全局可行路径搜索。", "设计融合目标跟踪、控制代价、动力学和碰撞惩罚的 MPPI 代价函数。", "对比 RRT* 变体，并在 MuJoCo 中完成闭环控制调参与验证。"], stats: [["10-DoF", "机器人状态"], ["RRT* + MPPI", "分层架构"], ["GPU", "采样控制"]], stack: ["MuJoCo", "JAX", "MPPI", "Bi-Informed RRT*", "Python"], secondary: "/projects/motion-metrics.png", secondaryAlt: "RRT 星规划成功率与路径代价对比" },
       { slug: "camera-radar-bev-fusion", cardImage: "/projects/bev-framework-source.png", number: "03", period: "2026.02 — 2026.04", type: "多模态感知 · 3D 检测", title: "相机-毫米波雷达 BEV 融合 3D 目标检测", summary: "基于 CenterPoint，在鸟瞰空间融合视觉特征与多帧毫米波雷达特征。", image: "/projects/bev-framework-source.png", imageAlt: "项目原始的相机-雷达 CenterPoint 融合框架", bullets: ["使用稀疏投影深度提示构建雷达引导的相机 BEV 模块。", "引入多帧 Radar Sweep 以及 Doppler、速度和归一化 RCS 特征。", "在 View-of-Delft 上相对基线提升 34.8% 的 BEV mAP。"], stats: [["+34.8%", "BEV mAP 相对提升"], ["3 帧", "时序雷达"], ["3 类", "检测头"]], stack: ["PyTorch", "CenterPoint", "CUDA", "Radar", "Camera", "View-of-Delft"], secondary: "/projects/bev-framework-source.png", secondaryAlt: "CenterPoint 项目框架" },
     ],
@@ -369,6 +369,7 @@ export default function Home() {
                 <div className="project-index-copy">
                   <p className="project-type">{project.type}</p><h3>{project.title}</h3><p className="project-summary">{project.summary}</p>
                   <div className="project-index-evidence">{project.stats.slice(0, 2).map(([value, label]) => <span key={label}><strong>{value}</strong>{label}</span>)}</div>
+                  <div className="project-index-highlights"><span>{locale === "en" ? "Delivered system" : "落地内容"}</span><ul>{project.bullets.slice(0, 3).map((item) => <li key={item}>{item}</li>)}</ul></div>
                   <div className="project-index-footer"><div className="tag-row">{project.stack.slice(0, 4).map((tag) => <span key={tag}>{tag}</span>)}</div><b>{isOpen ? (locale === "en" ? "Collapse details ↑" : "收起项目详情 ↑") : (locale === "en" ? "Expand details ↓" : "展开项目详情 ↓")}</b></div>
                 </div>
               </button>
@@ -381,7 +382,7 @@ export default function Home() {
 
                 <section className="project-inline-contribution"><div><p className="section-kicker">{locale === "en" ? "My contribution" : "个人贡献"}</p><h4>{detail.contributionTitle}</h4><div className="tag-row">{detail.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div><ol>{detail.contributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol></section>
 
-                {gallery.length > 0 && <section className="project-inline-gallery"><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{project.slug === "greenhouse-robot" ? (locale === "en" ? "Plan, system design and field results" : "计划、系统设计与现场成果") : (locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署")}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={item.wide || (!hasExplicitGalleryLayout && index === gallery.length - 1 && gallery.length % 2 === 1) ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
+                {gallery.length > 0 && <section className={`project-inline-gallery project-inline-gallery-${project.slug}`}><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{project.slug === "greenhouse-robot" ? (locale === "en" ? "Plan, system design and field results" : "计划、系统设计与现场成果") : (locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署")}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={item.wide || (!hasExplicitGalleryLayout && index === gallery.length - 1 && gallery.length % 2 === 1) ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
 
                 <section className="project-inline-outcome"><div><p className="section-kicker">{locale === "en" ? "Outcome" : "项目结果"}</p><h4>{locale === "en" ? "What the work demonstrates" : "这个项目证明了什么"}</h4></div><div><ul>{detail.results.map((result) => <li key={result}>{result}</li>)}</ul><aside><span>{locale === "en" ? "Limits & next step" : "局限与下一步"}</span><p>{detail.limitations}</p></aside></div></section>
 
