@@ -20,7 +20,7 @@ const content = {
     location: "Based in Beijing, CN",
     availability: "Open to embodied AI internships",
     workKicker: "Engineering portfolio",
-    workTitle: "Selected Projects",
+    workTitle: "Projects",
     projects: [
       {
         slug: "greenhouse-robot",
