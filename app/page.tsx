@@ -361,6 +361,7 @@ export default function Home() {
             const isOpen = openProject === project.slug;
             const detailId = `project-details-${project.slug}`;
             const gallery = detail.gallery.slice(1);
+            const hasExplicitGalleryLayout = gallery.some((item) => item.wide);
 
             return <article className={`project-disclosure${isOpen ? " is-open" : ""}`} key={project.number}>
               <button className={`project-index-card project-index-${project.slug}`} type="button" aria-expanded={isOpen} aria-controls={detailId} onClick={() => setOpenProject(isOpen ? null : project.slug)}>
@@ -380,7 +381,7 @@ export default function Home() {
 
                 <section className="project-inline-contribution"><div><p className="section-kicker">{locale === "en" ? "My contribution" : "个人贡献"}</p><h4>{detail.contributionTitle}</h4><div className="tag-row">{detail.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div><ol>{detail.contributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol></section>
 
-                {gallery.length > 0 && <section className="project-inline-gallery"><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{project.slug === "greenhouse-robot" ? (locale === "en" ? "Plan, system design and field results" : "计划、系统设计与现场成果") : (locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署")}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={item.wide || (index === gallery.length - 1 && gallery.length % 2 === 1) ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
+                {gallery.length > 0 && <section className="project-inline-gallery"><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{project.slug === "greenhouse-robot" ? (locale === "en" ? "Plan, system design and field results" : "计划、系统设计与现场成果") : (locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署")}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={item.wide || (!hasExplicitGalleryLayout && index === gallery.length - 1 && gallery.length % 2 === 1) ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
 
                 <section className="project-inline-outcome"><div><p className="section-kicker">{locale === "en" ? "Outcome" : "项目结果"}</p><h4>{locale === "en" ? "What the work demonstrates" : "这个项目证明了什么"}</h4></div><div><ul>{detail.results.map((result) => <li key={result}>{result}</li>)}</ul><aside><span>{locale === "en" ? "Limits & next step" : "局限与下一步"}</span><p>{detail.limitations}</p></aside></div></section>
 
