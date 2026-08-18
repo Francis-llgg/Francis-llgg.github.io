@@ -19,6 +19,14 @@ const content = {
     talkCta: "Let’s talk",
     location: "Based in Beijing, CN",
     availability: "Open to embodied AI internships",
+    nowKicker: "Now / Currently",
+    nowTitle: "What I’m working on",
+    nowUpdated: "Updated Aug 2026",
+    nowItems: [
+      ["V-JEPA 2", "Reproducing and evaluating V-JEPA 2 on IntPhys 2 and Diving to probe temporal prediction, latent dynamics and physical consistency."],
+      ["PH-Dreamer", "Reproducing PH-Dreamer and testing Hamiltonian structure and physics priors for video latent-state dynamics."],
+      ["Open to", "World-model and embodied-AI internships or research collaborations focused on robot learning and physically grounded video models."],
+    ],
     workKicker: "Engineering portfolio",
     workTitle: "Projects",
     projects: [
@@ -144,6 +152,7 @@ const content = {
     contactKicker: "Contact",
     contactTitle: "Let’s build robots that understand what happens next",
     emailCta: "Start a conversation",
+    downloadResume: "Download résumé",
     footer: "Designed from research notes, code and real-world tests.",
   },
   zh: {
@@ -159,6 +168,14 @@ const content = {
     talkCta: "联系我",
     location: "现居北京",
     availability: "正在寻找具身智能实习机会",
+    nowKicker: "当前 / 正在进行",
+    nowTitle: "我目前在做什么",
+    nowUpdated: "更新于 2026 年 8 月",
+    nowItems: [
+      ["V-JEPA 2", "在 IntPhys 2 与 Diving 数据集上复现并评测 V-JEPA 2，重点分析时序预测、潜空间动力学与物理一致性表征。"],
+      ["PH-Dreamer", "复现 PH-Dreamer，并验证哈密顿结构与物理先验对视频潜空间状态建模和动力学预测的作用。"],
+      ["机会方向", "正在寻找世界模型与具身智能方向的实习或研究合作，重点关注机器人学习和具有物理约束的视频模型。"],
+    ],
     workKicker: "工程实践",
     workTitle: "代表项目",
     projects: [
@@ -219,6 +236,7 @@ const content = {
     contactKicker: "联系",
     contactTitle: "一起构建能够理解“下一步会发生什么”的机器人",
     emailCta: "开始交流",
+    downloadResume: "下载英文简历",
     footer: "基于真实研究、代码与真机实验构建。",
   },
 };
@@ -296,6 +314,22 @@ export default function Home() {
                 <div className="hero-school-copy"><h3>{school}</h3><strong>{degree}</strong></div>
               </a>)}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="now-section content-section" id="now">
+        <div className="now-shell">
+          <header className="now-heading">
+            <div><p className="section-kicker">{t.nowKicker}</p><h2>{t.nowTitle}</h2></div>
+            <p className="now-updated"><span aria-hidden="true" />{t.nowUpdated}</p>
+          </header>
+          <div className="now-panel">
+            {t.nowItems.map(([label, text], index) => <article key={label}>
+              <div className="now-index"><span>0{index + 1}</span><i aria-hidden="true" /></div>
+              <h3>{label}</h3>
+              <p>{text}</p>
+            </article>)}
           </div>
         </div>
       </section>
@@ -401,7 +435,15 @@ export default function Home() {
         <p className="section-kicker">{t.contactKicker}</p>
         <h2>{t.contactTitle}</h2>
         <div className="contact-actions">
-          <a className="contact-email" href="mailto:franciszheng221@gmail.com">{t.emailCta} <span>↗</span></a>
+          <a className="contact-email" href="mailto:franciszheng221@gmail.com"><span>{t.emailCta}</span><strong>franciszheng221@gmail.com</strong><b>↗</b></a>
+          <div className="footer-link-grid">
+            {[
+              ["GitHub", "https://github.com/Francis-llgg", false],
+              ["Google Scholar", "https://scholar.google.com/scholar?q=%22Zilong+Zheng%22+%22MathBench%22", false],
+              ["LinkedIn", "https://www.linkedin.com/in/francis-z-07a53431a/", false],
+              [t.downloadResume, "/files/Zilong-Zheng-Resume.pdf", true],
+            ].map(([label, href, download], index) => <a href={href as string} target={download ? undefined : "_blank"} rel={download ? undefined : "noreferrer"} download={download ? "Zilong-Zheng-Resume.pdf" : undefined} key={label as string}><span>0{index + 1}</span><strong>{label}</strong><b>{download ? "↓" : "↗"}</b></a>)}
+          </div>
         </div>
         <div className="footer-bottom"><span>© 2026 Zilong Zheng</span><span>{t.footer}</span><a href="#top">↑ {locale === "en" ? "Top" : "顶部"}</a></div>
       </footer>
