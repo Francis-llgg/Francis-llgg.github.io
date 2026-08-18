@@ -192,12 +192,11 @@ export const projectRecords: ProjectRecord[] = [
         "Implemented trainable per-channel radar–camera fusion, connected the fused tensor to Car/Pedestrian/Cyclist CenterHead tasks, and made validation, checkpoint loading, NMS and leaderboard export configuration-consistent.",
       ],
       results: [
-        "Achieved a 34.8% relative BEV mAP uplift over the radar-only baseline on View-of-Delft.",
-        "Delivered one LiDAR-free inference path from raw three-sweep radar and monocular RGB to decoded 3D boxes for cars, pedestrians and cyclists.",
-        "Tracked validation mAP and loss across training to select the best checkpoint instead of the final epoch; the curves also exposed late-stage overfitting risk.",
-        "Packaged checkpoint-consistent test inference and submission export, preventing train/test mismatches in sweep count or enhanced-feature channels.",
+        "Structured a controlled ablation ladder from single-frame Radar-only to enhanced radar attributes, three-sweep accumulation and camera–radar BEV fusion. The complete model delivered a 34.8% relative BEV mAP uplift over the Radar-only baseline, showing that temporal density, physically meaningful radar channels and visual context contributed cumulatively.",
+        "Delivered a LiDAR-free inference path from ego-motion-aligned radar sweeps and monocular RGB to Car, Pedestrian and Cyclist 3D boxes, with checkpoint-bound sweep and feature settings preventing silent train–test mismatches.",
+        "Used validation-driven model selection rather than the final epoch or prediction ensembling: training retained the Top-K checkpoints ranked by entire-area validation mAP, while two independently trained runs were exported and compared before the stronger run was selected for the final leaderboard submission.",
       ],
-      limitations: "The model was evaluated on one dataset and depends on accurate radar–camera calibration and temporal poses. Validation mAP plateaued while loss rose late in training, indicating that stronger regularization or earlier stopping is needed. Next steps are class-aware calibration-noise tests, qualitative range and weather error analysis, and a stronger image backbone under the same compute budget.",
+      limitations: "A strict four-hour DelftBlue training budget ruled out compute-heavy Transformer fusion such as a BEVFormer-style encoder and a learned temporal sequence model; temporal information is currently introduced through ego-motion-aligned sweep accumulation rather than temporal attention. The deliberate priority was to establish a reproducible, competitive CenterPoint baseline and push it toward the state of the art before adding architectural novelty. The next stage is therefore Transformer-based cross-modal fusion and learned temporal modeling, followed by calibration-noise, range and weather robustness tests.",
       stats: [["+34.8%", "relative BEV mAP"], ["3 × 11-D", "temporal radar input"], ["8 bins", "1–60 m depth lift"]],
       stack: ["PyTorch", "CenterPoint", "ResNet-50", "CUDA", "Radar", "View-of-Delft"],
       gallery: [
@@ -227,12 +226,11 @@ export const projectRecords: ProjectRecord[] = [
         "实现逐通道可训练的雷达–相机融合，接入汽车、行人、骑行者三组 CenterHead，并统一验证、Checkpoint 加载、NMS 与排行榜结果导出配置。",
       ],
       results: [
-        "在 View-of-Delft 上相对 Radar-only 基线实现 34.8% 的 BEV mAP 提升。",
-        "交付从三帧原始毫米波雷达与单目 RGB 到汽车、行人、骑行者 3D 框解码的无 LiDAR 推理链路。",
-        "同步跟踪验证集 BEV mAP 与 Loss，以最佳 Checkpoint 而非最终 Epoch 作为交付模型，并从曲线中识别后期过拟合风险。",
-        "封装与 Checkpoint 配置一致的测试推理和提交导出，避免 Sweep 数量或增强特征通道在训练与测试阶段失配。",
+        "构建由单帧 Radar-only、增强雷达属性、三帧累积到相机–雷达 BEV 融合的逐级消融链路。完整模型相对 Radar-only 基线实现 34.8% 的 BEV mAP 提升，验证了时序点云密度、物理雷达特征与视觉上下文能够形成累积增益。",
+        "交付从自车运动对齐的 Radar Sweep 与单目 RGB，到汽车、行人和骑行者 3D 框的无 LiDAR 推理链路；Sweep 数量与增强特征配置随 Checkpoint 固化，避免训练和测试之间出现隐性配置失配。",
+        "采用验证集驱动的模型选择，而非直接使用最终 Epoch 或进行预测集成：训练阶段按 entire-area 验证集 mAP 保留 Top-K Checkpoint，并分别导出两个独立训练实验的排行榜结果，比较后选择表现更强的模型作为最终提交。",
       ],
-      limitations: "模型目前只在单一数据集上评测，并依赖准确的雷达–相机标定与时序位姿。验证集 mAP 后期趋于平台、Loss 却继续上升，说明需要更强正则化或提前停止。下一步应补充分类别的标定噪声测试、不同距离与天气条件下的定性误差分析，并在相同计算预算内评估更强视觉主干。",
+      limitations: "受 DelftBlue 四小时训练预算与可用算力限制，本阶段没有采用 BEVFormer 式 Transformer 融合，也没有训练可学习的时序模型；时间信息目前通过自车运动补偿后的多帧累积引入，而非 Temporal Attention。项目策略是先建立可复现的强 CenterPoint 基线并向 SOTA 靠近，再开展结构创新。下一步将尝试 Transformer 跨模态融合与可学习时序建模，并补充标定噪声、距离和天气条件下的鲁棒性评测。",
       stats: [["+34.8%", "BEV mAP 相对提升"], ["3 × 11 维", "时序雷达输入"], ["8 档", "1–60 m 深度升维"]],
       stack: ["PyTorch", "CenterPoint", "ResNet-50", "CUDA", "毫米波雷达", "View-of-Delft"],
       gallery: [
