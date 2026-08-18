@@ -202,8 +202,8 @@ export const projectRecords: ProjectRecord[] = [
       stack: ["PyTorch", "CenterPoint", "ResNet-50", "CUDA", "Radar", "View-of-Delft"],
       gallery: [
         { src: "/projects/view-of-delft-car.jpg", alt: "TU Delft autonomous vehicle used to introduce the View-of-Delft perception task", caption: "TU Delft research vehicle and the urban multimodal setting behind View-of-Delft" },
-        { src: "/projects/bev-model-structure.png", alt: "Detailed radar-guided multi-frame camera-radar CenterPoint model", caption: "Detailed model: 11-D temporal radar encoding, sparse-depth camera lift, channel-wise BEV fusion and three-class CenterHead" },
-        { src: "/projects/bev-framework-source.png", alt: "Implementation architecture for the camera-radar CenterPoint system", caption: "Implementation architecture: radar and camera branches, weighted-add fusion, box decoding and circle NMS" },
+        { src: "/projects/bev-system-teaser.png", alt: "Camera-radar BEV fusion system overview from sensor inputs to 3D detections", caption: "System overview: multi-sweep radar guidance, camera-to-BEV lifting, adaptive feature fusion and three-class detection" },
+        { src: "/projects/bev-technical-architecture.png", alt: "Technical architecture of the radar-guided camera BEV fusion system", caption: "Technical architecture: temporal radar encoding, radar-guided camera lifting, channel-wise fusion and CenterHead decoding" },
         { src: "/projects/bev-validation-loss.png", alt: "Validation loss across camera-radar model training", caption: "Validation loss reveals the late-training stability limit and supports early checkpoint selection" },
         { src: "/projects/bev-validation-map.png", alt: "Validation BEV mean average precision across training", caption: "Validation BEV mAP progression used to select and verify the strongest checkpoint" },
       ],
@@ -237,8 +237,8 @@ export const projectRecords: ProjectRecord[] = [
       stack: ["PyTorch", "CenterPoint", "ResNet-50", "CUDA", "毫米波雷达", "View-of-Delft"],
       gallery: [
         { src: "/projects/view-of-delft-car.jpg", alt: "用于介绍 View-of-Delft 感知任务的代尔夫特理工自动驾驶研究车辆", caption: "代尔夫特理工研究车辆，以及 View-of-Delft 所对应的城市多模态感知场景" },
-        { src: "/projects/bev-model-structure.png", alt: "雷达引导的多帧相机雷达 CenterPoint 详细模型结构", caption: "模型主图：11 维时序雷达编码、稀疏深度相机升维、逐通道 BEV 融合与三类 CenterHead" },
-        { src: "/projects/bev-framework-source.png", alt: "相机雷达 CenterPoint 系统实现架构", caption: "实现架构：雷达与相机双分支、加权融合、3D 框解码与 Circle NMS" },
+        { src: "/projects/bev-system-teaser.png", alt: "从传感器输入到三维检测的相机雷达 BEV 融合系统主图", caption: "系统主图：多帧雷达引导、相机特征升维、BEV 自适应融合与三类目标检测" },
+        { src: "/projects/bev-technical-architecture.png", alt: "雷达引导相机 BEV 融合系统的技术架构", caption: "技术架构：时序雷达编码、雷达引导相机升维、逐通道融合与 CenterHead 解码" },
         { src: "/projects/bev-validation-loss.png", alt: "相机雷达模型训练过程中的验证损失", caption: "验证集 Loss 揭示训练后期的稳定性边界，并支持提前选择 Checkpoint" },
         { src: "/projects/bev-validation-map.png", alt: "训练过程中的验证集 BEV 平均精度", caption: "依据验证集 BEV mAP 变化选择并核验表现最强的 Checkpoint" },
       ],

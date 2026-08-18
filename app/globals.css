@@ -245,10 +245,9 @@ h1 em { color:var(--blue); font-style:normal; font-weight:690; }
 .project-inline-gallery-hierarchical-motion-planning figure:nth-child(1) > div,.project-inline-gallery-hierarchical-motion-planning figure:nth-child(2) > div { height:390px; padding:12px; }
 .project-inline-gallery-hierarchical-motion-planning figure:nth-child(3) > div,.project-inline-gallery-hierarchical-motion-planning figure:nth-child(4) > div { height:300px; padding:12px; }
 .project-inline-gallery-camera-radar-bev-fusion > div:last-child { grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
-.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(1) { grid-column:span 7; }
-.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(2) { grid-column:span 5; }
+.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(1),.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(2) { grid-column:span 6; }
 .project-inline-gallery-camera-radar-bev-fusion figure:nth-child(3),.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(4) { grid-column:span 6; }
-.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(1) > div,.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(2) > div { height:520px; padding:12px; background:white; }
+.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(1) > div,.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(2) > div { height:360px; padding:12px; background:white; }
 .project-inline-gallery-camera-radar-bev-fusion figure:nth-child(3) > div,.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(4) > div { height:265px; padding:10px; background:white; }
 .project-inline-outcome { display:grid; grid-template-columns:minmax(280px,.74fr) minmax(0,1.26fr); gap:65px; padding-top:38px; }
 .project-inline-outcome ul { margin:0; padding:0; list-style:none; }
@@ -522,8 +521,7 @@ footer h2 { max-width:1050px; margin:20px 0 0; font-size:clamp(46px,6.5vw,90px);
   .project-inline-gallery-hierarchical-motion-planning figure:nth-child(n) > div { height:250px; }
   .project-inline-gallery-camera-radar-bev-fusion > div:last-child { grid-template-columns:1fr; }
   .project-inline-gallery-camera-radar-bev-fusion figure:nth-child(n) { grid-column:auto; }
-  .project-inline-gallery-camera-radar-bev-fusion figure:nth-child(1) > div { height:290px; }
-  .project-inline-gallery-camera-radar-bev-fusion figure:nth-child(2) > div { height:350px; }
+  .project-inline-gallery-camera-radar-bev-fusion figure:nth-child(1) > div,.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(2) > div { height:240px; }
   .project-inline-gallery-camera-radar-bev-fusion figure:nth-child(3) > div,.project-inline-gallery-camera-radar-bev-fusion figure:nth-child(4) > div { height:210px; }
   .skills-block p { grid-template-columns:1fr; gap:7px; }
   .now-heading { display:block; }
