@@ -116,7 +116,7 @@ const content = {
     paperContributionTitle: "My contribution",
     paperContributionIntro: "I worked end to end—from discovering raw data to delivering a labeled, runnable evaluation benchmark.",
     paperContributions: [
-      "Sourced heterogeneous mathematics data from AMC competitions, Gaokao and postgraduate entrance examinations, plus K–12 textbook theory, spanning conceptual knowledge and worked problems.",
+      "Curated 17 datasets spanning MCQ and open-ended QA: self-collected GSM-X-CN/Plus, Hungarian-Math-MCQ, AMC-8 & 12, SAT, Zhongkao, Gaokao, Kaoyan and stage-specific Theory-Knowledge from primary to college, plus open-source CEVAL-Math, MMLU-College-Math, Math401, SciBench and Arithmetic-HG.",
       "Cleaned, deduplicated and normalized the collected material, standardizing question text, answer choices, solutions and bilingual formatting for reliable evaluation.",
       "Designed and applied a structured annotation taxonomy across educational stage, theory or application, subject area, topic, language and source, then quality-checked labels and samples.",
       "Integrated the curated benchmark into OpenCompass, completed dataset configuration, inference and result aggregation, and systematically evaluated 30+ open- and closed-source models.",
@@ -190,7 +190,7 @@ const content = {
     paperContributionTitle: "我的贡献",
     paperContributionIntro: "我完整参与了从原始数据搜集到可运行评测基准的落地过程。",
     paperContributions: [
-      "搜集 AMC 数学竞赛、高考、研究生入学考试题目及 K–12 教科书理论知识等异构数据，覆盖概念知识与应用型问题。",
+      "搜集并整合 17 个覆盖选择题与开放式问答的数据集：自建 GSM-X-CN/Plus、Hungarian-Math-MCQ、AMC-8 & 12、SAT、中考、高考、考研，以及小学至大学阶段的 Theory-Knowledge；同时纳入开源的 CEVAL-Math、MMLU-College-Math、Math401、SciBench 与 Arithmetic-HG。",
       "对大规模原始数据进行清洗、去重与格式规范，统一题干、选项、答案、解析和中英文表达，使其能够稳定进入评测流程。",
       "建立并执行多层标签体系，按教育阶段、理论或应用、学科领域、知识主题、语言与数据来源完成标注，并抽检标签和样本质量。",
       "将整理后的 MathBench 接入 OpenCompass，完成数据配置、推理与结果汇总，并对 30+ 个开源和闭源代表模型开展系统评测。",
