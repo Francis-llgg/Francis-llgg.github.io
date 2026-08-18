@@ -64,21 +64,21 @@ const content = {
       },
       {
         slug: "camera-radar-bev-fusion",
-        cardImage: "/projects/bev-framework-source.png",
+        cardImage: "/projects/view-of-delft-car.jpg",
         number: "03",
         period: "Feb — Apr 2026",
-        type: "Multimodal perception · 3D detection",
-        title: "Camera-radar BEV fusion for robust 3D object detection",
-        summary: "A CenterPoint-based detector that fuses image features with multi-frame millimetre-wave radar in bird’s-eye view.",
-        image: "/projects/bev-framework-source.png",
-        imageAlt: "Camera-radar CenterPoint fusion framework from the project",
+        type: "Radar-camera perception · LiDAR-free 3D detection",
+        title: "Radar-guided camera BEV fusion for robust 3D detection",
+        summary: "Three ego-motion-aligned radar sweeps guide monocular features into BEV, producing a 34.8% relative mAP uplift over the radar baseline.",
+        image: "/projects/bev-model-structure.png",
+        imageAlt: "TU Delft research vehicle used for the View-of-Delft perception task",
         bullets: [
-          "Created a radar-guided camera BEV module using sparse projected depth hints.",
-          "Added multi-sweep accumulation plus Doppler, velocity and normalized RCS features.",
-          "Improved BEV mAP by 34.8% relative to the baseline on View-of-Delft.",
+          "Converted three aligned radar sweeps into an 11-D temporal point representation.",
+          "Lifted ResNet-50 features with sparse radar depth hints and 8-bin depth confidence.",
+          "Delivered checkpoint-consistent three-class inference with a 34.8% relative BEV mAP uplift.",
         ],
-        stats: [["+34.8%", "relative BEV mAP"], ["3 sweeps", "temporal radar"], ["3 classes", "detection heads"]],
-        stack: ["PyTorch", "CenterPoint", "CUDA", "Radar", "Camera", "View-of-Delft"],
+        stats: [["+34.8%", "relative BEV mAP"], ["3 × 11-D", "temporal radar"], ["8 bins", "depth lift"]],
+        stack: ["PyTorch", "CenterPoint", "ResNet-50", "Radar", "View-of-Delft"],
         secondary: "/projects/bev-framework-source.png",
         secondaryAlt: "CenterPoint project framework",
       },
@@ -164,7 +164,7 @@ const content = {
     projects: [
       { slug: "greenhouse-robot", cardImage: "/projects/greenhouse-robot-square.jpg", number: "01", period: "2026.03 — 2026.06", type: "自主机器人 · ROS2", title: "温室自主建图、导航与 Sim2Real 真机部署", summary: "在八周内完成从系统设计、ROS2 集成、仿真验证到 MIRTE 真机监督部署的完整交付。", image: "/projects/ros2-architecture.png", imageAlt: "ROS2 温室机器人软件架构", bullets: ["负责建图定位：扫描过滤、SLAM Toolbox 配置与可复用栅格地图。", "将植物行提取、Nav2 任务执行和植物感知结果接入同一 ROS2 系统。", "在 Gazebo 验证无碰撞任务，并将可监督流程部署到 MIRTE 真机。"], stats: [["8 周", "设计到现场验证"], ["6", "验证场景"], ["Gazebo → MIRTE", "部署路径"]], stack: ["ROS2", "Nav2", "SLAM Toolbox", "Gazebo", "YOLO", "React"], secondary: "/projects/greenhouse-perception.png", secondaryAlt: "郁金香和害虫检测结果" },
       { slug: "hierarchical-motion-planning", cardImage: "/projects/motion-environment.png", number: "02", period: "2025.11 — 2026.01", type: "规划与控制 · MuJoCo / JAX", title: "10-DoF 移动操作机器人的分层运动规划", summary: "结合 Bi-Informed RRT* 与 GPU 加速 MPPI，实现连续、平滑且满足动力学约束的无碰撞运动。", image: "/projects/motion-path.png", imageAlt: "Bi-Informed RRT 星搜索树与路径", bullets: ["在复杂酒吧机器人场景中实现全局可行路径搜索。", "设计融合目标跟踪、控制代价、动力学和碰撞惩罚的 MPPI 代价函数。", "对比 RRT* 变体，并在 MuJoCo 中完成闭环控制调参与验证。"], stats: [["10-DoF", "机器人状态"], ["RRT* + MPPI", "分层架构"], ["GPU", "采样控制"]], stack: ["MuJoCo", "JAX", "MPPI", "Bi-Informed RRT*", "Python"], secondary: "/projects/motion-metrics.png", secondaryAlt: "RRT 星规划成功率与路径代价对比" },
-      { slug: "camera-radar-bev-fusion", cardImage: "/projects/bev-framework-source.png", number: "03", period: "2026.02 — 2026.04", type: "多模态感知 · 3D 检测", title: "相机-毫米波雷达 BEV 融合 3D 目标检测", summary: "基于 CenterPoint，在鸟瞰空间融合视觉特征与多帧毫米波雷达特征。", image: "/projects/bev-framework-source.png", imageAlt: "项目原始的相机-雷达 CenterPoint 融合框架", bullets: ["使用稀疏投影深度提示构建雷达引导的相机 BEV 模块。", "引入多帧 Radar Sweep 以及 Doppler、速度和归一化 RCS 特征。", "在 View-of-Delft 上相对基线提升 34.8% 的 BEV mAP。"], stats: [["+34.8%", "BEV mAP 相对提升"], ["3 帧", "时序雷达"], ["3 类", "检测头"]], stack: ["PyTorch", "CenterPoint", "CUDA", "Radar", "Camera", "View-of-Delft"], secondary: "/projects/bev-framework-source.png", secondaryAlt: "CenterPoint 项目框架" },
+      { slug: "camera-radar-bev-fusion", cardImage: "/projects/view-of-delft-car.jpg", number: "03", period: "2026.02 — 2026.04", type: "雷达–相机感知 · 无 LiDAR 3D 检测", title: "雷达引导的相机 BEV 融合 3D 目标检测", summary: "三帧自车运动对齐雷达引导单目视觉特征升维到 BEV，相对 Radar-only 基线实现 34.8% 的 BEV mAP 提升。", image: "/projects/bev-model-structure.png", imageAlt: "用于 View-of-Delft 感知任务的代尔夫特理工研究车辆", bullets: ["将三帧对齐雷达构建为 11 维时序点表示。", "使用稀疏雷达深度提示与 8 档深度置信度升维 ResNet-50 特征。", "交付配置一致的三类检测推理链路，并实现 34.8% 的 BEV mAP 相对提升。"], stats: [["+34.8%", "BEV mAP 相对提升"], ["3 × 11 维", "时序雷达"], ["8 档", "深度升维"]], stack: ["PyTorch", "CenterPoint", "ResNet-50", "毫米波雷达", "View-of-Delft"], secondary: "/projects/bev-framework-source.png", secondaryAlt: "CenterPoint 项目框架" },
     ],
     experienceKicker: "实习经历",
     roles: [
@@ -224,7 +224,9 @@ const content = {
 };
 
 export default function Home() {
-  const [locale, setLocale] = useState<Locale>("en");
+  const [locale, setLocale] = useState<Locale>(() =>
+    typeof window !== "undefined" && new URLSearchParams(window.location.search).get("lang") === "zh" ? "zh" : "en",
+  );
   const [paperOpen, setPaperOpen] = useState(false);
   const [openProject, setOpenProject] = useState<string | null>(null);
   const t = content[locale];
@@ -247,9 +249,6 @@ export default function Home() {
     { name: "Shanghai AI Laboratory", src: "/organizations/shanghai-ai-lab.png", href: "https://www.shlab.org.cn/", wide: true },
     { name: "Institute of Automation, CAS", src: "/organizations/casia.png", href: locale === "en" ? "https://english.ia.cas.cn/" : "https://ia.cas.cn/", markOnly: true },
   ];
-  useEffect(() => {
-    if (new URLSearchParams(window.location.search).get("lang") === "zh") setLocale("zh");
-  }, []);
   useEffect(() => {
     document.documentElement.lang = locale === "en" ? "en" : "zh-CN";
   }, [locale]);
@@ -376,15 +375,15 @@ export default function Home() {
 
               <div className="project-inline-details" id={detailId} hidden={!isOpen}>
                 <section className="project-inline-context">
-                  <div><p className="section-kicker">{locale === "en" ? `Project ${project.number} · Context` : `项目 ${project.number} · 背景`}</p><h4>{locale === "en" ? "From problem to system" : "从问题到系统"}</h4><p>{detail.overview}</p></div>
+                  <div><p className="section-kicker">{locale === "en" ? `Project ${project.number} · Context` : `项目 ${project.number} · 背景`}</p><h4>{detail.contextTitle ?? (locale === "en" ? "From problem to system" : "从问题到系统")}</h4><p>{detail.overview}</p></div>
                   <div className="project-inline-story"><article><span>{locale === "en" ? "The challenge" : "核心挑战"}</span><p>{detail.challenge}</p></article><article><span>{locale === "en" ? "Technical approach" : "技术路线"}</span><p>{detail.approach}</p></article></div>
                 </section>
 
                 <section className="project-inline-contribution"><div><p className="section-kicker">{locale === "en" ? "My contribution" : "个人贡献"}</p><h4>{detail.contributionTitle}</h4><div className="tag-row">{detail.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div><ol>{detail.contributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol></section>
 
-                {gallery.length > 0 && <section className={`project-inline-gallery project-inline-gallery-${project.slug}`}><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{project.slug === "greenhouse-robot" ? (locale === "en" ? "Plan, system design and field results" : "计划、系统设计与现场成果") : (locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署")}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={item.wide || (!hasExplicitGalleryLayout && index === gallery.length - 1 && gallery.length % 2 === 1) ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
+                {gallery.length > 0 && <section className={`project-inline-gallery project-inline-gallery-${project.slug}`}><div><p className="section-kicker">{locale === "en" ? "Project evidence" : "项目证据"}</p><h4>{detail.evidenceTitle ?? (project.slug === "greenhouse-robot" ? (locale === "en" ? "Plan, system design and field results" : "计划、系统设计与现场成果") : (locale === "en" ? "Architecture, experiments and deployment" : "架构、实验与部署"))}</h4></div><div>{gallery.map((item, index) => <figure key={item.src} className={item.wide || (!hasExplicitGalleryLayout && index === gallery.length - 1 && gallery.length % 2 === 1) ? "gallery-wide" : ""}><div><img src={item.src} alt={item.alt} /></div><figcaption><span>0{index + 1}</span>{item.caption}</figcaption></figure>)}</div></section>}
 
-                <section className="project-inline-outcome"><div><p className="section-kicker">{locale === "en" ? "Outcome" : "项目结果"}</p><h4>{locale === "en" ? "What the work demonstrates" : "这个项目证明了什么"}</h4></div><div><ul>{detail.results.map((result) => <li key={result}>{result}</li>)}</ul><aside><span>{locale === "en" ? "Limits & next step" : "局限与下一步"}</span><p>{detail.limitations}</p></aside></div></section>
+                <section className="project-inline-outcome"><div><p className="section-kicker">{locale === "en" ? "Outcome" : "项目结果"}</p><h4>{detail.outcomeTitle ?? (locale === "en" ? "What the work demonstrates" : "这个项目证明了什么")}</h4></div><div><ul>{detail.results.map((result) => <li key={result}>{result}</li>)}</ul><aside><span>{locale === "en" ? "Limits & next step" : "局限与下一步"}</span><p>{detail.limitations}</p></aside></div></section>
 
                 <button className="project-inline-collapse" type="button" onClick={() => setOpenProject(null)}>{locale === "en" ? "Collapse project" : "收起项目"} ↑</button>
               </div>
