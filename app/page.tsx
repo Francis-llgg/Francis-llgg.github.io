@@ -122,12 +122,18 @@ const content = {
       "Delivered a reproducible OpenCompass evaluation pipeline from dataset configuration through inference and result aggregation, supporting systematic comparison of 30+ open- and closed-source models.",
     ],
     paperFindingsTitle: "Core findings",
-    paperFindingsIntro: "The cleaned data and structured labels turn a single model score into an interpretable capability profile.",
+    paperFindingsIntro: "Across difficulty, robustness, language, error types and interventions, MathBench shows where mathematical competence actually breaks down.",
     paperCaptions: [
-      "Application performance drops sharply beyond primary mathematics.",
-      "Chinese and English performance gaps vary substantially by model.",
+      "A clear difficulty cliff appears after primary mathematics; application ability degrades faster than theoretical knowledge.",
+      "Language is a genuine capability axis: GPT-4 scores 65.2 in Chinese and 69.0 in English, while most models show wider gaps.",
     ],
-    paperTakeaway: "MathBench makes model weaknesses traceable through a cleaned, labeled and reproducible evaluation pipeline—not just a single leaderboard score.",
+    paperFindingPoints: [
+      "Across model families, performance drops from primary to middle school and beyond; applied problem solving deteriorates more sharply than theoretical recall.",
+      "CircularEval exposes answer-position sensitivity: the gap from one-pass accuracy narrows only as models become stronger and more stable.",
+      "Error analysis attributes 49.5% of failures to concept misunderstandings and 33.4% to flawed reasoning, making knowledge and reasoning the dominant bottlenecks.",
+      "Knowledge-infused CoT raises accuracy from 26.6% to 33.4%; code tools strongly help arithmetic but add little on theory or college-level application.",
+    ],
+    paperTakeaway: "A single average score can hide fragile application, language and answer-order sensitivity. MathBench turns those failure modes into visible, actionable evidence.",
     skillTitle: "Working toolkit",
     skillGroups: [
       ["Learning", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"],
@@ -196,12 +202,18 @@ const content = {
       "交付可复现的 OpenCompass 端到端评测流水线，贯通数据配置、模型推理与结果汇总，支持对 30+ 个开源和闭源代表模型进行系统比较。",
     ],
     paperFindingsTitle: "核心结论",
-    paperFindingsIntro: "经过清洗的数据与结构化标签，将单一分数转化为可以解释的模型能力画像。",
+    paperFindingsIntro: "MathBench 从难度、稳定性、语言、错误类型与干预效果等维度，揭示数学能力究竟在何处失效。",
     paperCaptions: [
-      "模型的应用能力在小学阶段之后明显下降。",
-      "同一模型的中文与英文表现可能存在显著差异。",
+      "小学阶段之后出现明显的难度断层，应用能力比理论知识衰减得更快。",
+      "语言本身就是一条能力轴：GPT-4 中文得分 65.2、英文得分 69.0，而多数模型的双语差距更大。",
     ],
-    paperTakeaway: "MathBench 通过经过清洗、标注且可复现的评测流程，使模型能力短板能够被追踪和解释，而不只是给出一个排行榜分数。",
+    paperFindingPoints: [
+      "不同模型家族呈现相似趋势：进入初中及以上阶段后表现明显下降，应用问题求解比理论记忆退化得更快。",
+      "CircularEval 揭示模型对选项顺序的敏感性；只有能力更强、输出更稳定的模型，其循环评测与单次准确率差距才明显缩小。",
+      "错误分析显示，49.5% 的失败来自概念误解，33.4% 来自错误推理，说明知识掌握与推理路径是主要瓶颈。",
+      "知识注入结合 CoT 将准确率从 26.6% 提升至 33.4%；代码工具显著改善基础运算，却难以提升理论题和大学阶段应用题。",
+    ],
+    paperTakeaway: "单一平均分会掩盖应用能力、语言表现与答案顺序敏感性。MathBench 将这些失效模式转化为可定位、可改进的证据。",
     skillTitle: "技术栈",
     skillGroups: [["机器学习", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"], ["机器人", "ROS2 · Nav2 · Gazebo · MuJoCo · PCL · OpenCV"], ["编程语言", "Python · C / C++ · MATLAB"], ["系统工具", "Linux · Git · CUDA · JAX"]],
     contactKicker: "联系",
@@ -333,7 +345,7 @@ export default function Home() {
               <ol>{t.paperContributions.map((item, index) => <li key={item}><span>0{index + 1}</span><p>{item}</p></li>)}</ol>
             </section>
 
-            <section className="publication-detail-findings"><div className="publication-detail-findings-heading"><div><h4>{t.paperFindingsTitle}</h4><p>{t.paperFindingsIntro}</p></div></div><div className="publication-detail-charts">{[["/academic/mathbench-stage-results.png", "MathBench performance across difficulty stages"], ["/academic/mathbench-bilingual.png", "Chinese and English MathBench performance"]].map(([src, alt], index) => <figure key={src}><div><img src={src} alt={alt} /></div><figcaption><span>0{index + 1}</span>{t.paperCaptions[index]}</figcaption></figure>)}</div><p className="publication-detail-takeaway">{t.paperTakeaway}</p></section>
+            <section className="publication-detail-findings"><div className="publication-detail-findings-heading"><div><h4>{t.paperFindingsTitle}</h4><p>{t.paperFindingsIntro}</p></div></div><div className="publication-detail-charts">{[["/academic/mathbench-stage-results.png", "MathBench performance across difficulty stages"], ["/academic/mathbench-bilingual.png", "Chinese and English MathBench performance"]].map(([src, alt], index) => <figure key={src}><div><img src={src} alt={alt} /></div><figcaption><span>0{index + 1}</span>{t.paperCaptions[index]}</figcaption></figure>)}</div><div className="publication-finding-grid">{t.paperFindingPoints.map((finding, index) => <article key={finding}><span>0{index + 3}</span><p>{finding}</p></article>)}</div><p className="publication-detail-takeaway">{t.paperTakeaway}</p></section>
 
             <div className="publication-detail-links"><a href="https://aclanthology.org/2024.findings-acl.411/" target="_blank" rel="noreferrer">ACL Anthology ↗</a><a href="https://github.com/open-compass/MathBench" target="_blank" rel="noreferrer">{locale === "en" ? "Code & dataset" : "代码与数据"} ↗</a><button type="button" onClick={() => setPaperOpen(false)}>{t.paperCollapse} ↑</button></div>
           </div>
