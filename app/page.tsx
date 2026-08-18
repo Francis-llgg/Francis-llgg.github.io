@@ -439,7 +439,7 @@ export default function Home() {
           <div className="footer-link-grid">
             {[
               ["GitHub", "https://github.com/Francis-llgg", false],
-              ["Google Scholar", "https://scholar.google.com/scholar?q=%22Zilong+Zheng%22+%22MathBench%22", false],
+              ["Google Scholar", "https://scholar.google.com/citations?user=GdER77kAAAAJ&hl=zh-CN&oi=sra", false],
               ["LinkedIn", "https://www.linkedin.com/in/francis-z-07a53431a/", false],
               [t.downloadResume, "/files/Zilong-Zheng-Resume.pdf", true],
             ].map(([label, href, download], index) => <a href={href as string} target={download ? undefined : "_blank"} rel={download ? undefined : "noreferrer"} download={download ? "Zilong-Zheng-Resume.pdf" : undefined} key={label as string}><span>0{index + 1}</span><strong>{label}</strong><b>{download ? "↓" : "↗"}</b></a>)}
