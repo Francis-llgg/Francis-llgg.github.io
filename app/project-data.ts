@@ -195,6 +195,8 @@ export const projectRecords: ProjectRecord[] = [
       stack: ["PyTorch", "CenterPoint", "CUDA", "Radar", "Camera", "View-of-Delft"],
       gallery: [
         { src: "/projects/bev-framework-source.png", alt: "Camera-radar CenterPoint implementation diagram", caption: "Project framework: radar and camera branches, learnable fusion and CenterHead detection" },
+        { src: "/projects/bev-validation-loss.png", alt: "Validation loss across camera-radar model training", caption: "Validation loss tracked throughout the controlled training run" },
+        { src: "/projects/bev-validation-map.png", alt: "Validation BEV mean average precision across training", caption: "BEV mAP progression used to select and verify the final checkpoint" },
       ],
     },
     zh: {
@@ -222,6 +224,8 @@ export const projectRecords: ProjectRecord[] = [
       stack: ["PyTorch", "CenterPoint", "CUDA", "Radar", "Camera", "View-of-Delft"],
       gallery: [
         { src: "/projects/bev-framework-source.png", alt: "相机雷达 CenterPoint 实现框架", caption: "项目框架：雷达与相机双分支、可学习融合和 CenterHead 检测" },
+        { src: "/projects/bev-validation-loss.png", alt: "相机雷达模型训练过程中的验证损失", caption: "在完整训练过程中持续跟踪验证损失" },
+        { src: "/projects/bev-validation-map.png", alt: "训练过程中的验证集 BEV 平均精度", caption: "依据 BEV mAP 变化选择并核验最终 Checkpoint" },
       ],
     },
   },

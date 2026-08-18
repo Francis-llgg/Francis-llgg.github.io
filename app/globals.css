@@ -170,7 +170,7 @@ h1 em { color:var(--blue); font-style:normal; font-weight:690; }
 .project-index-card:focus-visible { outline:3px solid #aeb6db; outline-offset:4px; }
 .project-number { position:absolute; bottom:14px; left:14px; z-index:1; min-width:34px; height:34px; display:grid; place-items:center; border-radius:999px; background:rgba(255,255,255,.94); color:var(--blue); box-shadow:0 6px 18px rgba(35,48,92,.14); font:700 9px var(--font-geist-mono); }
 .project-index-visual { position:relative; min-height:294px; overflow:hidden; display:grid; place-items:center; border-radius:13px; background:#f0f1f4; }
-.project-index-visual img { width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
+.project-index-visual img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s ease; }
 .project-index-card:hover .project-index-visual img { transform:scale(1.025); }
 .project-index-greenhouse-robot .project-index-visual img { object-position:center; }
 .project-index-camera-radar-bev-fusion .project-index-visual img { object-fit:contain; padding:14px; background:#f3f4f7; }
@@ -224,6 +224,12 @@ h1 em { color:var(--blue); font-style:normal; font-weight:690; }
 .project-inline-gallery-greenhouse-robot figure:nth-child(5),.project-inline-gallery-greenhouse-robot figure:nth-child(6) { grid-column:span 6; }
 .project-inline-gallery-greenhouse-robot figure > div { height:320px; padding:12px; }
 .project-inline-gallery-greenhouse-robot figure:nth-child(5) > div,.project-inline-gallery-greenhouse-robot figure:nth-child(6) > div { height:400px; }
+.project-inline-gallery-hierarchical-motion-planning > div:last-child { grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
+.project-inline-gallery-hierarchical-motion-planning figure:nth-child(1),.project-inline-gallery-hierarchical-motion-planning figure:nth-child(3) { grid-column:span 4; }
+.project-inline-gallery-hierarchical-motion-planning figure:nth-child(2),.project-inline-gallery-hierarchical-motion-planning figure:nth-child(4) { grid-column:span 8; }
+.project-inline-gallery-hierarchical-motion-planning figure:nth-child(1) > div,.project-inline-gallery-hierarchical-motion-planning figure:nth-child(2) > div { height:390px; padding:12px; }
+.project-inline-gallery-hierarchical-motion-planning figure:nth-child(3) > div,.project-inline-gallery-hierarchical-motion-planning figure:nth-child(4) > div { height:300px; padding:12px; }
+.project-inline-gallery-camera-radar-bev-fusion figure > div { height:265px; padding:10px; background:white; }
 .project-inline-outcome { display:grid; grid-template-columns:minmax(280px,.74fr) minmax(0,1.26fr); gap:65px; padding-top:38px; }
 .project-inline-outcome ul { margin:0; padding:0; list-style:none; }
 .project-inline-outcome li { padding:13px 0 13px 20px; position:relative; border-top:1px solid var(--line); color:#596274; font-size:12px; line-height:1.65; }
@@ -478,6 +484,10 @@ footer h2 { max-width:1050px; margin:20px 0 0; font-size:clamp(46px,6.5vw,90px);
   .project-inline-gallery-greenhouse-robot > div:last-child { grid-template-columns:1fr; }
   .project-inline-gallery-greenhouse-robot figure:nth-child(n) { grid-column:auto; }
   .project-inline-gallery-greenhouse-robot figure:nth-child(n) > div { height:230px; }
+  .project-inline-gallery-hierarchical-motion-planning > div:last-child { grid-template-columns:1fr; }
+  .project-inline-gallery-hierarchical-motion-planning figure:nth-child(n) { grid-column:auto; }
+  .project-inline-gallery-hierarchical-motion-planning figure:nth-child(n) > div { height:250px; }
+  .project-inline-gallery-camera-radar-bev-fusion figure > div { height:210px; }
   .skills-block p { grid-template-columns:1fr; gap:7px; }
   .contact-actions { flex-direction:column; align-items:flex-start; }
   .footer-bottom { grid-template-columns:1fr; }
