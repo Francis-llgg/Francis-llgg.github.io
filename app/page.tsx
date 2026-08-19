@@ -7,7 +7,7 @@ type Locale = "en" | "zh";
 
 const content = {
   en: {
-    nav: ["Experience", "Publication", "Projects", "Contact"],
+    nav: ["Publication", "Projects", "Experience", "Contact"],
     switchLabel: "中文",
     switchAria: "Switch to Chinese",
     eyebrow: "Robotics · World Models · Multimodal AI",
@@ -22,11 +22,32 @@ const content = {
     nowKicker: "Now / Currently",
     nowTitle: "What I’m working on",
     nowUpdated: "Updated Aug 2026",
+    nowIntro: "Building an original, physics-grounded world model — combining dense video representation, action-aware latent dynamics and explicit physical structure.",
     nowItems: [
-      ["V-JEPA 2", "Reproducing and evaluating V-JEPA 2 on IntPhys 2 and Diving to probe temporal prediction, latent dynamics and physical consistency."],
-      ["PH-Dreamer", "Reproducing PH-Dreamer and testing Hamiltonian structure and physics priors for video latent-state dynamics."],
-      ["Open to", "World-model and embodied-AI internships or research collaborations focused on robot learning and physically grounded video models."],
+      {
+        title: "Physics-grounded JEPA",
+        status: "Model design · In development",
+        summary: "I am moving beyond model reproduction to build my own world-model architecture, using V-JEPA 2.1 as the representation backbone and Port-Hamiltonian dynamics to structure latent evolution.",
+        workstreams: [
+          ["Backbone", "Start from V-JEPA 2.1 dense, temporally consistent video features and retain control-relevant spatial structure."],
+          ["Dynamics", "Introduce Port-Hamiltonian latent transitions inspired by PH-Dreamer, modelling action-controlled energy routing, flow and dissipation."],
+          ["Action grounding", "Draw on PSG-JEPA for physical-state and state-change grounding, and LAPA for learning latent actions from video without relying entirely on action labels."],
+        ],
+        tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer"],
+      },
+      {
+        title: "Baseline model testing",
+        status: "Experimentation · Started",
+        summary: "The first evaluation cycle is already running. I am establishing reliable base-model behaviour before integrating new grounding and physics modules, so every improvement can be isolated and explained.",
+        workstreams: [
+          ["Baseline", "Test the V-JEPA 2.1 representation path and PH-Dreamer-style dynamics under aligned data, preprocessing and evaluation settings."],
+          ["Model probes", "Measure feature quality, temporal consistency, physical-state identifiability, action relevance and latent-rollout stability on IntPhys 2 and Diving."],
+          ["Ablation path", "Add physical grounding, latent-action modelling and Port-Hamiltonian constraints incrementally to attribute gains to individual design choices."],
+        ],
+        tags: ["Baseline evaluation", "IntPhys 2", "Diving", "Ablation", "Failure analysis"],
+      },
     ],
+    nowOpportunity: ["Open to", "World models × embodied AI", "Internships and research collaborations at the intersection of robot learning, action-conditioned video models and physically grounded representation learning."],
     workKicker: "Engineering portfolio",
     workTitle: "Projects",
     projects: [
@@ -93,7 +114,7 @@ const content = {
     ],
     experienceKicker: "Experience",
     roles: [
-      { date: "Jul 2026 — Present", org: "Sunrising Lab", role: "World Model Algorithm Intern", text: "Reproducing and evaluating V-JEPA 2 on IntPhys 2 and Diving; studying latent dynamics, temporal prediction and physically consistent representation. Reproducing PH-Dreamer and exploring Hamiltonian structure and physics priors for video latent-state dynamics." },
+      { date: "Jul 2026 — Present", org: "Sunrising Lab", role: "World Model Algorithm Intern", text: "Building a physics-grounded world model around V-JEPA 2.1 and Port-Hamiltonian latent dynamics, informed by PH-Dreamer, PSG-JEPA and LAPA. Baseline evaluation has started on IntPhys 2 and Diving before controlled module integration and ablation." },
       { date: "Sep 2024 — Feb 2025", org: "Siemens China · Digital Industries", role: "Smart Manufacturing Intern", text: "Built a client carbon-footprint estimation model from multi-source business-travel data, covering data cleaning, rule modelling and visual deployment." },
       { date: "Dec 2023 — Aug 2024", org: "Shanghai AI Laboratory", role: "Large Language Model Algorithm Intern", text: "Designed the MathBench evaluation framework, built its OpenCompass pipeline and benchmarked 30+ leading models. Diagnosed an InternLM2 Russian tokenizer anomaly through cross-language compression analysis and supported the validated fix." },
       { date: "Jul — Oct 2022", org: "Institute of Automation, CAS", role: "Vision Model Algorithm Intern", text: "Reproduced core ViT and Swin Transformer modules, then migrated and verified an UperNet semantic segmentation stack from PyTorch to MindSpore." },
@@ -154,7 +175,7 @@ const content = {
     footer: "Designed from research notes, code and real-world tests.",
   },
   zh: {
-    nav: ["经历", "论文", "项目", "联系"],
+    nav: ["论文", "项目", "经历", "联系"],
     switchLabel: "EN",
     switchAria: "切换到英文",
     eyebrow: "机器人学 · 世界模型 · 多模态智能",
@@ -169,11 +190,32 @@ const content = {
     nowKicker: "当前 / 正在进行",
     nowTitle: "我目前在做什么",
     nowUpdated: "更新于 2026 年 8 月",
+    nowIntro: "正在搭建自有的物理结构化世界模型：将稠密视频表征、动作感知的潜空间动力学与显式物理结构结合起来。",
     nowItems: [
-      ["V-JEPA 2", "在 IntPhys 2 与 Diving 数据集上复现并评测 V-JEPA 2，重点分析时序预测、潜空间动力学与物理一致性表征。"],
-      ["PH-Dreamer", "复现 PH-Dreamer，并验证哈密顿结构与物理先验对视频潜空间状态建模和动力学预测的作用。"],
-      ["机会方向", "正在寻找世界模型与具身智能方向的实习或研究合作，重点关注机器人学习和具有物理约束的视频模型。"],
+      {
+        title: "物理结构化 JEPA",
+        status: "模型设计 · 开发中",
+        summary: "工作已从单纯复现转向自有世界模型架构的搭建：以 V-JEPA 2.1 为表征骨干，以 Port-Hamiltonian 动力学为潜状态演化引入物理结构。",
+        workstreams: [
+          ["表征骨干", "以 V-JEPA 2.1 的稠密、时序一致视频特征为起点，尽可能保留与控制相关的空间结构。"],
+          ["动力学", "参考 PH-Dreamer 引入 Port-Hamiltonian 潜状态转移，建模动作驱动的能量路由、流与耗散。"],
+          ["动作接地", "参考 PSG-JEPA 对物理状态与状态变化的接地方式，并借鉴 LAPA 从无动作标注视频中学习潜动作表征的思路。"],
+        ],
+        tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer"],
+      },
+      {
+        title: "基础模型测验",
+        status: "实验阶段 · 已启动",
+        summary: "第一轮基础模型测验已经开始。在整体集成新的物理接地与动力学模块前，先建立稳定、可复现的基线，确保后续每一项改进都可以被单独归因。",
+        workstreams: [
+          ["基线对齐", "在统一的数据、预处理与评测设置下，测验 V-JEPA 2.1 表征链路与 PH-Dreamer 式动力学基线。"],
+          ["能力探针", "在 IntPhys 2 与 Diving 上检验特征质量、时序一致性、物理状态可识别性、动作相关性和潜空间 rollout 稳定性。"],
+          ["消融路径", "逐步加入物理接地、潜动作建模和 Port-Hamiltonian 约束，将性能变化归因到具体设计。"],
+        ],
+        tags: ["基线评测", "IntPhys 2", "Diving", "消融实验", "失效分析"],
+      },
     ],
+    nowOpportunity: ["开放机会", "世界模型 × 具身智能", "寻找世界模型与具身智能方向的实习或研究合作，重点关注机器人学习、Action-Conditioned 视频模型与具有物理约束的表征学习。"],
     workKicker: "工程实践",
     workTitle: "代表项目",
     projects: [
@@ -183,7 +225,7 @@ const content = {
     ],
     experienceKicker: "实习经历",
     roles: [
-      { date: "2026.07 — 至今", org: "光象（北京）科技有限公司", role: "世界模型算法实习生", text: "复现并评测 V-JEPA 2 在 IntPhys 2、Diving 数据集上的表现，分析潜空间动力学、时序预测和物理一致性表征；复现 PH-Dreamer，并探索将哈密顿结构与物理先验引入视频潜空间状态建模。" },
+      { date: "2026.07 — 至今", org: "光象（北京）科技有限公司", role: "世界模型算法实习生", text: "围绕 V-JEPA 2.1 与 Port-Hamiltonian 潜空间动力学搭建物理结构化世界模型，参考 PH-Dreamer、PSG-JEPA 与 LAPA 的物理接地和潜动作建模思路；已开始在 IntPhys 2 与 Diving 上进行基础模型测验。" },
       { date: "2024.09 — 2025.02", org: "西门子（中国）· 数字化工业集团", role: "智能制造实习生", text: "基于多源差旅数据构建客户碳足迹计算模型，完成数据清洗、规则建模与可视化部署。" },
       { date: "2023.12 — 2024.08", org: "上海人工智能实验室 · 大模型中心", role: "大语言模型算法实习生", text: "设计 MathBench 数学推理评测体系，基于 OpenCompass 搭建评测流水线并完成 30+ 主流模型对比；通过跨语言压缩率分析定位 InternLM2 俄语 tokenizer 异常，并协助完成修复验证。" },
       { date: "2022.07 — 2022.10", org: "中科院自动化所 · 视觉计算组", role: "视觉模型算法实习生", text: "复现 ViT 与 Swin Transformer 核心模块，并完成 UperNet 语义分割框架从 PyTorch 到 MindSpore 的迁移验证。" },
@@ -246,13 +288,13 @@ export default function Home() {
   const t = content[locale];
   const experienceEvidence = locale === "en"
     ? [
-        { contribution: "Reproducing V-JEPA 2 and PH-Dreamer for physically consistent video representations.", evidence: "Latent dynamics · IntPhys 2 · Diving" },
+        { contribution: "Building a physics-grounded world model from V-JEPA 2.1, Port-Hamiltonian dynamics and action-grounding ideas; baseline testing is underway.", evidence: "V-JEPA 2.1 · PH-Dreamer · PSG-JEPA · LAPA" },
         { contribution: "Built a client carbon-footprint model from multi-source business-travel data.", evidence: "Data cleaning · rule modelling · visual deployment" },
         { contribution: "Designed MathBench and built its evaluation pipeline in OpenCompass.", evidence: "ACL Findings 2024 · 30+ models" },
         { contribution: "Rebuilt ViT/Swin modules and migrated the UperNet stack to MindSpore.", evidence: "PyTorch → MindSpore · verified pipeline" },
       ]
     : [
-        { contribution: "复现 V-JEPA 2 与 PH-Dreamer，研究具有物理一致性的视频表征。", evidence: "潜空间动力学 · IntPhys 2 · Diving" },
+        { contribution: "基于 V-JEPA 2.1、Port-Hamiltonian 动力学与动作接地思路搭建物理结构化世界模型，已启动基线测验。", evidence: "V-JEPA 2.1 · PH-Dreamer · PSG-JEPA · LAPA" },
         { contribution: "基于多源差旅数据构建客户碳足迹估算模型。", evidence: "数据清洗 · 规则建模 · 可视化部署" },
         { contribution: "设计 MathBench，并在 OpenCompass 中搭建完整评测流水线。", evidence: "ACL Findings 2024 · 30+ 模型" },
         { contribution: "复现 ViT/Swin，并将 UperNet 完整迁移至 MindSpore。", evidence: "PyTorch → MindSpore · 流程验证" },
@@ -267,7 +309,7 @@ export default function Home() {
     document.documentElement.lang = locale === "en" ? "en" : "zh-CN";
   }, [locale]);
 
-  const navTargets = ["experience", "publication", "projects", "contact"];
+  const navTargets = ["publication", "projects", "experience", "contact"];
 
   return (
     <main>
@@ -317,36 +359,19 @@ export default function Home() {
       <section className="now-section content-section" id="now">
         <div className="now-shell">
           <header className="now-heading">
-            <div><p className="section-kicker">{t.nowKicker}</p><h2>{t.nowTitle}</h2></div>
+            <div><p className="section-kicker">{t.nowKicker}</p><h2>{t.nowTitle}</h2><p className="now-intro">{t.nowIntro}</p></div>
             <p className="now-updated"><span aria-hidden="true" />{t.nowUpdated}</p>
           </header>
-          <div className="now-panel">
-            {t.nowItems.map(([label, text], index) => <article key={label}>
-              <div className="now-index"><span>0{index + 1}</span><i aria-hidden="true" /></div>
-              <h3>{label}</h3>
-              <p>{text}</p>
+          <div className="now-research-grid">
+            {t.nowItems.map((item, index) => <article className="now-research-card" key={item.title}>
+              <div className="now-card-head"><div className="now-index"><span>0{index + 1}</span><i aria-hidden="true" /></div><span className="now-status">{item.status}</span></div>
+              <h3>{item.title}</h3>
+              <p className="now-card-summary">{item.summary}</p>
+              <div className="now-workstreams">{item.workstreams.map(([label, text]) => <div key={label}><span>{label}</span><p>{text}</p></div>)}</div>
+              <div className="now-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
             </article>)}
           </div>
-        </div>
-      </section>
-
-      <section className="experience-section content-section" id="experience">
-        <div className="section-heading experience-heading">
-          <div><p className="section-kicker">{t.experienceKicker}</p><h2>{locale === "en" ? "Experience" : "实习经历"}</h2></div>
-        </div>
-        <div className="experience-table">
-          <div className="experience-labels" aria-hidden="true"><span>{locale === "en" ? "Role" : "职位"}</span><span>{locale === "en" ? "Contribution & evidence" : "核心贡献与证据"}</span></div>
-          {t.roles.map((role, index) => (
-            <article className="experience-row" key={role.org}>
-              <div className="experience-role">
-                <div className={`experience-logo${experienceBrands[index].wide ? " experience-logo-wide" : ""}${experienceBrands[index].markOnly ? " experience-logo-mark" : ""}`}>
-                  <img src={experienceBrands[index].src} alt={`${experienceBrands[index].name} logo`} />
-                </div>
-                <div className="experience-role-copy"><p>{role.date}</p><h3><a href={experienceBrands[index].href} target="_blank" rel="noreferrer">{role.org}</a></h3><h4>{role.role}</h4></div>
-              </div>
-              <div className="experience-work"><p className="experience-contribution">{experienceEvidence[index].contribution}</p><p className="experience-evidence">{experienceEvidence[index].evidence}</p></div>
-            </article>
-          ))}
+          <aside className="now-opportunity"><span>{t.nowOpportunity[0]}</span><strong>{t.nowOpportunity[1]}</strong><p>{t.nowOpportunity[2]}</p></aside>
         </div>
       </section>
 
@@ -404,6 +429,18 @@ export default function Home() {
               </button>
 
               <div className="project-inline-details" id={detailId} hidden={!isOpen}>
+                {project.slug === "greenhouse-robot" && <section className="project-inline-demo" aria-label={locale === "en" ? "Greenhouse robot system demo" : "温室机器人系统演示"}>
+                  <div className="project-inline-demo-heading">
+                    <div><p className="section-kicker">{locale === "en" ? "Physical system demo" : "真机系统 Demo"}</p><h4>{locale === "en" ? "From mapping to onboard perception" : "从自主建图到机载感知"}</h4></div>
+                    <p>{locale === "en" ? "English demo · 67 seconds · ROS2, SLAM Toolbox, Nav2 and perception" : "中英双语完整演示 · 67 秒 · ROS2、SLAM Toolbox、Nav2 与目标检测"}</p>
+                  </div>
+                  <video key={locale} controls playsInline preload="metadata" poster={locale === "en" ? "/projects/greenhouse-demo-poster-en.jpg" : "/projects/greenhouse-demo-poster-bilingual.jpg"}>
+                    <source src={locale === "en" ? "/videos/greenhouse-robot-demo-en.mp4" : "/videos/greenhouse-robot-demo-bilingual.mp4"} type="video/mp4" />
+                    {locale === "en" ? "Your browser does not support embedded video." : "当前浏览器不支持嵌入式视频播放。"}
+                  </video>
+                  <div className="project-inline-demo-sequence"><span>01 {locale === "en" ? "Mapping" : "自主建图"}</span><span>02 {locale === "en" ? "Simulation navigation" : "仿真导航"}</span><span>03 {locale === "en" ? "Physical navigation" : "真机导航"}</span><span>04 {locale === "en" ? "Detection" : "目标检测"}</span></div>
+                </section>}
+
                 <section className="project-inline-context">
                   <div><p className="section-kicker">{locale === "en" ? `Project ${project.number} · Context` : `项目 ${project.number} · 背景`}</p><h4>{detail.contextTitle ?? (locale === "en" ? "From problem to system" : "从问题到系统")}</h4><p>{detail.overview}</p></div>
                   <div className="project-inline-story"><article><span>{locale === "en" ? "The challenge" : "核心挑战"}</span><p>{detail.challenge}</p></article><article><span>{locale === "en" ? "Technical approach" : "技术路线"}</span><p>{detail.approach}</p></article></div>
@@ -425,6 +462,26 @@ export default function Home() {
       <section className="skills-section content-section">
         <div className="section-heading compact"><div><p className="section-kicker">{t.skillTitle}</p><h2>{locale === "en" ? "Tools I build with" : "我的技术工具箱"}</h2></div></div>
         <div className="skills-block">{t.skillGroups.map(([label, skills]) => <p key={label}><span>{label}</span>{skills}</p>)}</div>
+      </section>
+
+      <section className="experience-section content-section" id="experience">
+        <div className="section-heading experience-heading">
+          <div><p className="section-kicker">{t.experienceKicker}</p><h2>{locale === "en" ? "Experience" : "实习经历"}</h2></div>
+        </div>
+        <div className="experience-table">
+          <div className="experience-labels" aria-hidden="true"><span>{locale === "en" ? "Role" : "职位"}</span><span>{locale === "en" ? "Contribution & evidence" : "核心贡献与证据"}</span></div>
+          {t.roles.map((role, index) => (
+            <article className="experience-row" key={role.org}>
+              <div className="experience-role">
+                <div className={`experience-logo${experienceBrands[index].wide ? " experience-logo-wide" : ""}${experienceBrands[index].markOnly ? " experience-logo-mark" : ""}`}>
+                  <img src={experienceBrands[index].src} alt={`${experienceBrands[index].name} logo`} />
+                </div>
+                <div className="experience-role-copy"><p>{role.date}</p><h3><a href={experienceBrands[index].href} target="_blank" rel="noreferrer">{role.org}</a></h3><h4>{role.role}</h4></div>
+              </div>
+              <div className="experience-work"><p className="experience-contribution">{experienceEvidence[index].contribution}</p><p className="experience-evidence">{experienceEvidence[index].evidence}</p></div>
+            </article>
+          ))}
+        </div>
       </section>
 
       <footer id="contact">
