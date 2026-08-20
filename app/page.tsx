@@ -14,40 +14,36 @@ const content = {
     headlineA: "I build intelligent systems that",
     headlineB: "perceive, reason",
     headlineC: "and move",
-    intro: "I’m Zilong (Francis) Zheng, a Robotics MSc candidate at TU Delft working across world models, embodied intelligence and real-world robot deployment.",
+    intro: "I’m Zilong (Francis) Zheng, a Robotics MSc candidate at TU Delft working across world models, reinforcement learning and real-world robot deployment.",
     workCta: "Explore selected work",
     talkCta: "Let’s talk",
     location: "Based in Beijing, CN",
-    availability: "Open to embodied AI internships",
+    availability: "Open to thesis projects, research and full-time roles",
     nowKicker: "Now / Currently",
     nowTitle: "What I’m working on",
     nowUpdated: "Updated Aug 2026",
     nowIntro: "Building an original, physics-grounded world model — combining dense video representation, action-aware latent dynamics and explicit physical structure.",
-    nowItems: [
-      {
-        title: "Physics-grounded JEPA",
-        status: "Model design · In development",
-        summary: "I am moving beyond model reproduction to build my own world-model architecture, using V-JEPA 2.1 as the representation backbone and Port-Hamiltonian dynamics to structure latent evolution.",
-        workstreams: [
-          ["Backbone", "Start from V-JEPA 2.1 dense, temporally consistent video features and retain control-relevant spatial structure."],
-          ["Dynamics", "Introduce Port-Hamiltonian latent transitions inspired by PH-Dreamer, modelling action-controlled energy routing, flow and dissipation."],
-          ["Action grounding", "Draw on PSG-JEPA for physical-state and state-change grounding, and LAPA for learning latent actions from video without relying entirely on action labels."],
-        ],
-        tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer"],
-      },
-      {
-        title: "Baseline model testing",
-        status: "Experimentation · Started",
-        summary: "The first evaluation cycle is already running. I am establishing reliable base-model behaviour before integrating new grounding and physics modules, so every improvement can be isolated and explained.",
-        workstreams: [
-          ["Baseline", "Test the V-JEPA 2.1 representation path and PH-Dreamer-style dynamics under aligned data, preprocessing and evaluation settings."],
-          ["Model probes", "Measure feature quality, temporal consistency, physical-state identifiability, action relevance and latent-rollout stability on IntPhys 2 and Diving."],
-          ["Ablation path", "Add physical grounding, latent-action modelling and Port-Hamiltonian constraints incrementally to attribute gains to individual design choices."],
-        ],
-        tags: ["Baseline evaluation", "IntPhys 2", "Diving", "Ablation", "Failure analysis"],
-      },
-    ],
-    nowOpportunity: ["Open to", "World models × embodied AI", "Internships and research collaborations at the intersection of robot learning, action-conditioned video models and physically grounded representation learning."],
+    nowModel: {
+      title: "Physics-grounded JEPA world model",
+      status: "Architecture build · Baseline testing active",
+      summary: "I am building an original world model rather than treating reproduction as the endpoint: V-JEPA 2.1 provides dense video representations, while action grounding and Port-Hamiltonian dynamics organize the latent space around controllable physical state evolution.",
+      stackTitle: "Model architecture",
+      stack: [
+        ["01", "Video representation", "V-JEPA 2.1 dense, temporally consistent features"],
+        ["02", "Structured dynamics", "PH-Dreamer-inspired Port-Hamiltonian flow, energy routing and dissipation"],
+        ["03", "Physical grounding", "PSG-JEPA objectives for state identifiability and multi-horizon state change"],
+        ["04", "Latent action", "LAPA-style action abstraction learned from video transitions"],
+      ],
+      validationTitle: "Current validation",
+      validationIntro: "The first baseline cycle is running before full integration, so later gains can be attributed to specific components rather than to a moving experimental setup.",
+      validation: [
+        ["Baseline alignment", "Align datasets, preprocessing, checkpoints and metrics for the V-JEPA 2.1 representation path and PH-Dreamer-style dynamics."],
+        ["Capability probes", "Measure temporal consistency, physical-state identifiability, action relevance and latent-rollout stability on IntPhys 2 and Diving."],
+        ["Controlled integration", "Introduce grounding, latent-action and Port-Hamiltonian modules one at a time, with matched ablations and failure analysis."],
+      ],
+      tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer", "IntPhys 2", "Diving"],
+    },
+    nowOpportunity: ["Open to", "Thesis · Research · Full-time", "Thesis projects, research opportunities and full-time roles in world models, robot learning and physically grounded intelligence."],
     workKicker: "Engineering portfolio",
     workTitle: "Projects",
     projects: [
@@ -182,40 +178,36 @@ const content = {
     headlineA: "我构建能够",
     headlineB: "感知、推理",
     headlineC: "并行动的智能系统",
-    intro: "我是郑子龙（Francis Zheng），代尔夫特理工大学机器人学硕士研究生，专注于世界模型、具身智能与机器人真机部署。",
+    intro: "我是郑子龙（Francis Zheng），代尔夫特理工大学机器人学硕士研究生，专注于世界模型、强化学习与真机部署。",
     workCta: "查看代表项目",
     talkCta: "联系我",
     location: "现居北京",
-    availability: "正在寻找具身智能实习机会",
+    availability: "正在寻找实习和毕业正式岗位",
     nowKicker: "当前 / 正在进行",
     nowTitle: "我目前在做什么",
     nowUpdated: "更新于 2026 年 8 月",
     nowIntro: "正在搭建自有的物理结构化世界模型：将稠密视频表征、动作感知的潜空间动力学与显式物理结构结合起来。",
-    nowItems: [
-      {
-        title: "物理结构化 JEPA",
-        status: "模型设计 · 开发中",
-        summary: "工作已从单纯复现转向自有世界模型架构的搭建：以 V-JEPA 2.1 为表征骨干，以 Port-Hamiltonian 动力学为潜状态演化引入物理结构。",
-        workstreams: [
-          ["表征骨干", "以 V-JEPA 2.1 的稠密、时序一致视频特征为起点，尽可能保留与控制相关的空间结构。"],
-          ["动力学", "参考 PH-Dreamer 引入 Port-Hamiltonian 潜状态转移，建模动作驱动的能量路由、流与耗散。"],
-          ["动作接地", "参考 PSG-JEPA 对物理状态与状态变化的接地方式，并借鉴 LAPA 从无动作标注视频中学习潜动作表征的思路。"],
-        ],
-        tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer"],
-      },
-      {
-        title: "基础模型测验",
-        status: "实验阶段 · 已启动",
-        summary: "第一轮基础模型测验已经开始。在整体集成新的物理接地与动力学模块前，先建立稳定、可复现的基线，确保后续每一项改进都可以被单独归因。",
-        workstreams: [
-          ["基线对齐", "在统一的数据、预处理与评测设置下，测验 V-JEPA 2.1 表征链路与 PH-Dreamer 式动力学基线。"],
-          ["能力探针", "在 IntPhys 2 与 Diving 上检验特征质量、时序一致性、物理状态可识别性、动作相关性和潜空间 rollout 稳定性。"],
-          ["消融路径", "逐步加入物理接地、潜动作建模和 Port-Hamiltonian 约束，将性能变化归因到具体设计。"],
-        ],
-        tags: ["基线评测", "IntPhys 2", "Diving", "消融实验", "失效分析"],
-      },
-    ],
-    nowOpportunity: ["开放机会", "世界模型 × 具身智能", "寻找世界模型与具身智能方向的实习或研究合作，重点关注机器人学习、Action-Conditioned 视频模型与具有物理约束的表征学习。"],
+    nowModel: {
+      title: "物理结构化 JEPA 世界模型",
+      status: "架构搭建 · 基线测验进行中",
+      summary: "目标不是停留在复现，而是搭建自有世界模型：V-JEPA 2.1 提供稠密视频表征，动作接地与 Port-Hamiltonian 动力学则将潜空间组织为可控的物理状态演化。",
+      stackTitle: "模型架构",
+      stack: [
+        ["01", "视频表征", "V-JEPA 2.1 稠密且时序一致的特征"],
+        ["02", "结构化动力学", "参考 PH-Dreamer 的 Port-Hamiltonian 流、能量路由与耗散"],
+        ["03", "物理状态接地", "PSG-JEPA 的状态可识别与多时域状态变化目标"],
+        ["04", "潜动作表征", "借鉴 LAPA 从视频转移中抽象动作的方式"],
+      ],
+      validationTitle: "当前验证",
+      validationIntro: "在整体集成前先跑通第一轮基线，避免实验设置同时变动，使后续改进能够被明确归因。",
+      validation: [
+        ["基线对齐", "统一 V-JEPA 2.1 表征链路与 PH-Dreamer 式动力学的数据、预处理、Checkpoint 与评测指标。"],
+        ["能力探针", "在 IntPhys 2 与 Diving 上检验时序一致性、物理状态可识别性、动作相关性与潜空间 rollout 稳定性。"],
+        ["受控集成", "逐项加入物理接地、潜动作和 Port-Hamiltonian 模块，通过配对消融与失效分析验证各项设计。"],
+      ],
+      tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer", "IntPhys 2", "Diving"],
+    },
+    nowOpportunity: ["开放机会", "实习 · 毕业正式岗位", "正在寻找世界模型、强化学习与机器人方向的实习和毕业正式岗位。"],
     workKicker: "工程实践",
     workTitle: "代表项目",
     projects: [
@@ -331,12 +323,18 @@ export default function Home() {
           <h1>Zilong <em>Zheng</em></h1>
           <p className="hero-role">{locale === "en" ? "MSc Robotics · TU Delft  /  World Model Algorithm Intern" : "代尔夫特理工机器人学硕士  /  世界模型算法实习生"}</p>
           <p className="hero-intro">{t.intro}</p>
-          <div className="focus-row">
-            {(locale === "en" ? ["World Models", "Embodied AI", "Robot Systems"] : ["世界模型", "具身智能", "机器人系统"]).map((item) => <span key={item}>{item}</span>)}
-          </div>
-          <div className="hero-actions">
-            <a className="primary-action" href="#projects">{t.workCta} <span>↘</span></a>
-            <a className="text-action" href="mailto:franciszheng221@gmail.com">{t.talkCta} ↗</a>
+          <div className="hero-action-line">
+            <div className="hero-actions">
+              <a className="primary-action" href="#projects">{t.workCta} <span>↘</span></a>
+            </div>
+            <a className="hero-opportunity" href="#contact" aria-label={locale === "en" ? "Open to thesis projects, research and full-time roles — contact me" : "正在寻找实习和毕业正式岗位——联系我"}>
+              <i aria-hidden="true" />
+              <span>
+                <small>{locale === "en" ? "Open to" : "正在寻找"}</small>
+                <strong>{locale === "en" ? "Thesis · Research · Full-time" : "实习 · 毕业正式岗位"}</strong>
+              </span>
+              <b aria-hidden="true">↗</b>
+            </a>
           </div>
           <div className="hero-education">
             <div className="hero-education-grid">
@@ -349,7 +347,12 @@ export default function Home() {
                 key={school}
               >
                 <div className={`hero-school-logo ${index === 1 ? "hero-school-logo-round" : ""}`}><img src={index === 0 ? "/academic/tu-delft-logo.png" : "/academic/beihang-logo.jpg"} alt={`${school} logo`} /></div>
-                <div className="hero-school-copy"><h3>{school}</h3><strong>{degree}</strong></div>
+                <div className={`hero-school-copy ${locale === "zh" ? "hero-school-copy-zh" : ""}`}>
+                  <h3>{school}</h3><strong>{degree}</strong>
+                  {locale === "zh" && <div className="hero-school-meta">
+                    {(index === 0 ? ["QS #47 · 2026"] : ["985 / 211 / 双一流 · 控制科学与工程 A"]).map((item) => <span key={item}>{item}</span>)}
+                  </div>}
+                </div>
               </a>)}
             </div>
           </div>
@@ -359,25 +362,25 @@ export default function Home() {
       <section className="now-section content-section" id="now">
         <div className="now-shell">
           <header className="now-heading">
-            <div><p className="section-kicker">{t.nowKicker}</p><h2>{t.nowTitle}</h2><p className="now-intro">{t.nowIntro}</p></div>
+            <div><p className="section-kicker section-index">{locale === "en" ? "01 / Current research" : "01 / 当前研究"}</p><h2>{t.nowTitle}</h2><p className="now-intro">{t.nowIntro}</p></div>
             <p className="now-updated"><span aria-hidden="true" />{t.nowUpdated}</p>
           </header>
           <div className="now-research-grid">
-            {t.nowItems.map((item, index) => <article className="now-research-card" key={item.title}>
-              <div className="now-card-head"><div className="now-index"><span>0{index + 1}</span><i aria-hidden="true" /></div><span className="now-status">{item.status}</span></div>
-              <h3>{item.title}</h3>
-              <p className="now-card-summary">{item.summary}</p>
-              <div className="now-workstreams">{item.workstreams.map(([label, text]) => <div key={label}><span>{label}</span><p>{text}</p></div>)}</div>
-              <div className="now-tags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-            </article>)}
+            <article className="now-research-card now-research-card-unified">
+              <div className="now-card-head"><div className="now-index"><span>01</span><i aria-hidden="true" /></div><span className="now-status">{t.nowModel.status}</span></div>
+              <div className="now-model-lead"><h3>{t.nowModel.title}</h3><p className="now-card-summary">{t.nowModel.summary}</p></div>
+              <div className="now-model-body">
+                <section className="now-model-stack"><h4>{t.nowModel.stackTitle}</h4><div className="now-architecture">{t.nowModel.stack.map(([number, title, text]) => <article key={number}><span>{number}</span><div><strong>{title}</strong><p>{text}</p></div></article>)}</div></section>
+                <section className="now-validation"><h4>{t.nowModel.validationTitle}</h4><p>{t.nowModel.validationIntro}</p><div>{t.nowModel.validation.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><div><strong>{title}</strong><p>{text}</p></div></article>)}</div></section>
+              </div>
+            </article>
           </div>
-          <aside className="now-opportunity"><span>{t.nowOpportunity[0]}</span><strong>{t.nowOpportunity[1]}</strong><p>{t.nowOpportunity[2]}</p></aside>
         </div>
       </section>
 
       <section className="publication-section content-section" id="publication">
         <div className="section-heading compact">
-          <div><p className="section-kicker">{t.researchKicker}</p><h2>{locale === "en" ? "Publication" : "论文发表"}</h2></div>
+          <div><p className="section-kicker section-index">{locale === "en" ? "02 / Research output" : "02 / 研究成果"}</p><h2>{locale === "en" ? "Publication" : "论文发表"}</h2></div>
         </div>
         <article className={`publication-disclosure${paperOpen ? " is-open" : ""}`}>
           <button className="publication-card" type="button" aria-expanded={paperOpen} aria-controls="mathbench-details" onClick={() => setPaperOpen(!paperOpen)}>
@@ -407,7 +410,7 @@ export default function Home() {
       </section>
 
       <section className="work-section content-section" id="projects">
-        <div className="section-heading"><div><p className="section-kicker">{t.workKicker}</p><h2>{t.workTitle}</h2></div></div>
+        <div className="section-heading"><div><p className="section-kicker section-index">{locale === "en" ? "03 / Selected work" : "03 / 工程实践"}</p><h2>{t.workTitle}</h2></div></div>
         <div className="project-list">
           {[...t.projects].sort((a, b) => a.number.localeCompare(b.number)).map((project) => {
             const fullProject = projectRecords.find((item) => item.slug === project.slug)!;
@@ -432,7 +435,6 @@ export default function Home() {
                 {project.slug === "greenhouse-robot" && <section className="project-inline-demo" aria-label={locale === "en" ? "Greenhouse robot system demo" : "温室机器人系统演示"}>
                   <div className="project-inline-demo-heading">
                     <div><p className="section-kicker">{locale === "en" ? "Physical system demo" : "真机系统 Demo"}</p><h4>{locale === "en" ? "From mapping to onboard perception" : "从自主建图到机载感知"}</h4></div>
-                    <p>{locale === "en" ? "English demo · 67 seconds · ROS2, SLAM Toolbox, Nav2 and perception" : "中英双语完整演示 · 67 秒 · ROS2、SLAM Toolbox、Nav2 与目标检测"}</p>
                   </div>
                   <video key={locale} controls playsInline preload="metadata" poster={locale === "en" ? "/projects/greenhouse-demo-poster-en.jpg" : "/projects/greenhouse-demo-poster-bilingual.jpg"}>
                     <source src={locale === "en" ? "/videos/greenhouse-robot-demo-en.mp4" : "/videos/greenhouse-robot-demo-bilingual.mp4"} type="video/mp4" />
@@ -459,14 +461,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="skills-section content-section">
-        <div className="section-heading compact"><div><p className="section-kicker">{t.skillTitle}</p><h2>{locale === "en" ? "Tools I build with" : "我的技术工具箱"}</h2></div></div>
-        <div className="skills-block">{t.skillGroups.map(([label, skills]) => <p key={label}><span>{label}</span>{skills}</p>)}</div>
-      </section>
-
       <section className="experience-section content-section" id="experience">
         <div className="section-heading experience-heading">
-          <div><p className="section-kicker">{t.experienceKicker}</p><h2>{locale === "en" ? "Experience" : "实习经历"}</h2></div>
+          <div><p className="section-kicker section-index">{locale === "en" ? "04 / Practice" : "04 / 实践经历"}</p><h2>{locale === "en" ? "Experience" : "实习经历"}</h2></div>
         </div>
         <div className="experience-table">
           <div className="experience-labels" aria-hidden="true"><span>{locale === "en" ? "Role" : "职位"}</span><span>{locale === "en" ? "Contribution & evidence" : "核心贡献与证据"}</span></div>
@@ -484,16 +481,21 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="skills-section content-section">
+        <div className="section-heading compact"><div><p className="section-kicker section-index">{locale === "en" ? "05 / Toolkit" : "05 / 技术栈"}</p><h2>{locale === "en" ? "Tools I build with" : "我的技术工具箱"}</h2></div></div>
+        <div className="skills-block">{t.skillGroups.map(([label, skills]) => <p key={label}><span>{label}</span>{skills}</p>)}</div>
+      </section>
+
       <footer id="contact">
-        <p className="section-kicker">{t.contactKicker}</p>
         <h2>{t.contactTitle}</h2>
         <div className="contact-actions">
           <div className="footer-link-grid">
             {[
+              [locale === "en" ? "Email" : "联系我", "mailto:franciszheng221@gmail.com"],
               ["GitHub", "https://github.com/Francis-llgg"],
               ["Google Scholar", "https://scholar.google.com/citations?user=GdER77kAAAAJ&hl=zh-CN&oi=sra"],
               ["LinkedIn", "https://www.linkedin.com/in/francis-z-07a53431a/"],
-            ].map(([label, href], index) => <a href={href} target="_blank" rel="noreferrer" key={label}><span>0{index + 1}</span><strong>{label}</strong><b>↗</b></a>)}
+            ].map(([label, href], index) => <a href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined} key={label}><span>0{index + 1}</span><strong>{label}</strong><b>↗</b></a>)}
           </div>
         </div>
         <div className="footer-bottom"><span>© 2026 Zilong Zheng</span><span>{t.footer}</span><a href="#top">↑ {locale === "en" ? "Top" : "顶部"}</a></div>

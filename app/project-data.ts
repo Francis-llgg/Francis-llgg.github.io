@@ -45,7 +45,6 @@ export const projectRecords: ProjectRecord[] = [
       contributions: [
         "Owned the mapping and localization workflow: removed robot self-reflections from LiDAR scans, configured SLAM Toolbox, and saved reusable occupancy grids and pose graphs for later missions.",
         "Compared AMCL with SLAM Toolbox localization on the saved map; after reproducing heading drift during turns, selected and documented the more stable localization path for the integrated system.",
-        "Turned the map into executable inspection missions by integrating a BFS-based table detector, safe row-offset waypoints, Nav2 planning and a YAML-driven mission queue—reducing reliance on hand-authored coordinates.",
         "Supported cross-stack deployment and verification from Gazebo to MIRTE hardware, including perception hand-off, narrow-aisle costmap tuning, launch/configuration packaging and evidence-based failure analysis.",
       ],
       results: [
@@ -79,7 +78,6 @@ export const projectRecords: ProjectRecord[] = [
       contributions: [
         "负责建图与定位工作流：过滤 LiDAR 中的机器人自反射，配置 SLAM Toolbox，并保存可复用的栅格地图与 Pose Graph 供后续任务调用。",
         "在保存地图上对比 AMCL 与 SLAM Toolbox 定位，复现转向时的航向漂移后，选择并记录更稳定的定位方案供集成系统使用。",
-        "把地图转化为可执行巡检任务：接入基于 BFS 的桌面检测、安全行间偏置航点、Nav2 规划与 YAML 任务队列，减少对手工坐标的依赖。",
         "参与从 Gazebo 到 MIRTE 真机的跨模块部署与验证，包括感知结果接入、窄通道 Costmap 调参、启动配置封装和基于证据的失败分析。",
       ],
       results: [
@@ -118,8 +116,7 @@ export const projectRecords: ProjectRecord[] = [
       contributions: [
         "Implemented the modular global–local planner interface and connected it to the MuJoCo simulation loop.",
         "Developed Bi-Informed RRT* path search and collision checking for the bartender workspace.",
-        "Designed and tuned an MPPI objective covering path tracking, control effort, dynamics and obstacle avoidance.",
-        "Benchmarked planner success, path cost and compute-time trade-offs across sampling budgets and MPPI horizons.",
+        "Designed and tuned an MPPI objective covering path tracking, control effort, dynamics and obstacle avoidance, then benchmarked success, path cost and compute-time trade-offs across sampling budgets and prediction horizons.",
       ],
       results: [
         "The hierarchy produced collision-free global routes and smooth closed-loop execution across three serving positions.",
@@ -149,8 +146,7 @@ export const projectRecords: ProjectRecord[] = [
       contributions: [
         "实现模块化全局—局部规划器接口，并接入 MuJoCo 仿真闭环。",
         "面向酒吧工作空间实现 Bi-Informed RRT* 搜索与碰撞检测。",
-        "设计并调试包含路径跟踪、控制代价、动力学约束和避障的 MPPI 目标函数。",
-        "对不同采样预算与 MPPI 时域设置下的成功率、路径代价和计算开销进行评测。",
+        "设计并调试包含路径跟踪、控制代价、动力学约束和避障的 MPPI 目标函数，并评测不同采样预算与预测时域下的成功率、路径代价和计算开销。",
       ],
       results: [
         "分层系统在三个服务位置之间生成无碰撞全局路径，并完成平滑闭环执行。",
@@ -189,14 +185,13 @@ export const projectRecords: ProjectRecord[] = [
         "Reworked the data pipeline for three-sweep temporal fusion: transformed historical radar into the current ego frame, attached time offsets, rejected invalid frame gaps and preserved sweep configuration at checkpoint level.",
         "Built the 11-channel radar representation and 0.16 m BEV pillar encoder, adding absolute compensated velocity, static/moving state and normalized RCS to the original radar attributes.",
         "Implemented RadarGuidedCameraBEV: projected radar points into RGB, kept the nearest valid depth per pixel, predicted an 8-bin depth distribution and confidence-weighted the splat into a 320 × 320 BEV grid.",
-        "Implemented trainable per-channel radar–camera fusion, connected the fused tensor to Car/Pedestrian/Cyclist CenterHead tasks, and made validation, checkpoint loading, NMS and leaderboard export configuration-consistent.",
       ],
       results: [
         "Structured a controlled ablation ladder from single-frame Radar-only to enhanced radar attributes, three-sweep accumulation and camera–radar BEV fusion. The complete model delivered a 34.8% relative BEV mAP uplift over the Radar-only baseline, showing that temporal density, physically meaningful radar channels and visual context contributed cumulatively.",
         "Delivered a LiDAR-free inference path from ego-motion-aligned radar sweeps and monocular RGB to Car, Pedestrian and Cyclist 3D boxes, with checkpoint-bound sweep and feature settings preventing silent train–test mismatches.",
         "Used validation-driven model selection rather than the final epoch or prediction ensembling: training retained the Top-K checkpoints ranked by entire-area validation mAP, while two independently trained runs were exported and compared before the stronger run was selected for the final leaderboard submission.",
       ],
-      limitations: "A strict four-hour DelftBlue training budget ruled out compute-heavy Transformer fusion such as a BEVFormer-style encoder and a learned temporal sequence model; temporal information is currently introduced through ego-motion-aligned sweep accumulation rather than temporal attention. The deliberate priority was to establish a reproducible, competitive CenterPoint baseline and push it toward the state of the art before adding architectural novelty. The next stage is therefore Transformer-based cross-modal fusion and learned temporal modeling, followed by calibration-noise, range and weather robustness tests.",
+      limitations: "A strict four-hour DelftBlue training budget ruled out compute-heavy Transformer fusion such as a BEVFormer-style encoder and a learned temporal sequence model; temporal information is currently introduced through ego-motion-aligned sweep accumulation rather than temporal attention. In retrospect, I introduced fusion and feature innovations before first establishing and fully tuning a strong, reproducible CenterPoint baseline. This made it harder to isolate gains and left some modules below their potential under an unstable baseline and limited training budget. Next time I would first lock the data, augmentation, training and evaluation recipe and push CenterPoint to a stable competitive level, then add Transformer cross-modal fusion and learned temporal modeling one component at a time with matched ablations, followed by calibration-noise, range and weather robustness tests.",
       stats: [["+34.8%", "relative BEV mAP"], ["3 × 11-D", "temporal radar input"], ["8 bins", "1–60 m depth lift"]],
       stack: ["PyTorch", "CenterPoint", "ResNet-50", "CUDA", "Radar", "View-of-Delft"],
       gallery: [
@@ -223,14 +218,13 @@ export const projectRecords: ProjectRecord[] = [
         "重构三帧时序融合数据链路：将历史 Radar Sweep 变换到当前自车坐标系，附加时间偏移，过滤异常帧间隔，并将 Sweep 配置写入 Checkpoint 对应流程。",
         "实现 11 通道雷达表示与 0.16 m 分辨率 BEV Pillar 编码，在原始属性上加入绝对补偿速度、静止或运动状态与归一化 RCS。",
         "实现 RadarGuidedCameraBEV：将雷达投影到 RGB，逐像素保留最近有效深度，预测 8 档深度分布，并用置信度加权方式散射到 320 × 320 BEV 网格。",
-        "实现逐通道可训练的雷达–相机融合，接入汽车、行人、骑行者三组 CenterHead，并统一验证、Checkpoint 加载、NMS 与排行榜结果导出配置。",
       ],
       results: [
         "构建由单帧 Radar-only、增强雷达属性、三帧累积到相机–雷达 BEV 融合的逐级消融链路。完整模型相对 Radar-only 基线实现 34.8% 的 BEV mAP 提升，验证了时序点云密度、物理雷达特征与视觉上下文能够形成累积增益。",
         "交付从自车运动对齐的 Radar Sweep 与单目 RGB，到汽车、行人和骑行者 3D 框的无 LiDAR 推理链路；Sweep 数量与增强特征配置随 Checkpoint 固化，避免训练和测试之间出现隐性配置失配。",
         "采用验证集驱动的模型选择，而非直接使用最终 Epoch 或进行预测集成：训练阶段按 entire-area 验证集 mAP 保留 Top-K Checkpoint，并分别导出两个独立训练实验的排行榜结果，比较后选择表现更强的模型作为最终提交。",
       ],
-      limitations: "受 DelftBlue 四小时训练预算与可用算力限制，本阶段没有采用 BEVFormer 式 Transformer 融合，也没有训练可学习的时序模型；时间信息目前通过自车运动补偿后的多帧累积引入，而非 Temporal Attention。项目策略是先建立可复现的强 CenterPoint 基线并向 SOTA 靠近，再开展结构创新。下一步将尝试 Transformer 跨模态融合与可学习时序建模，并补充标定噪声、距离和天气条件下的鲁棒性评测。",
+      limitations: "受 DelftBlue 四小时训练预算与可用算力限制，本阶段没有采用 BEVFormer 式 Transformer 融合，也没有训练可学习的时序模型；时间信息目前通过自车运动补偿后的多帧累积引入，而非 Temporal Attention。复盘项目流程，我在开展融合结构与特征创新前，没有先建立并充分调优一套可复现的强 CenterPoint 基线，因此各模块的独立贡献更难归因，部分设计也在基线稳定性与训练预算限制下未充分发挥。下次会先固定数据、增强、训练和评测配置，将 CenterPoint 推到稳定且有竞争力的水平，再逐项引入 Transformer 跨模态融合与可学习时序建模，配合严格消融，并补充标定噪声、距离和天气条件下的鲁棒性评测。",
       stats: [["+34.8%", "BEV mAP 相对提升"], ["3 × 11 维", "时序雷达输入"], ["8 档", "1–60 m 深度升维"]],
       stack: ["PyTorch", "CenterPoint", "ResNet-50", "CUDA", "毫米波雷达", "View-of-Delft"],
       gallery: [
