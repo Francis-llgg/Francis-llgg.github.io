@@ -70,10 +70,10 @@ h1 em { color:var(--blue); font-style:normal; font-weight:690; }
 .hero-school-copy strong { display:block; margin-top:5px; color:var(--blue); font-size:11px; font-weight:650; }
 .hero-school-meta { display:flex; align-items:center; margin-top:5px; }
 .hero-school-meta span { color:#9a9faf; font-family:var(--font-geist-mono); font-size:7px; font-weight:560; line-height:1.25; letter-spacing:.025em; white-space:nowrap; }
-.hero-school-copy-zh { display:grid; grid-template-columns:max-content minmax(0,1fr); align-items:center; column-gap:10px; row-gap:5px; }
-.hero-school-copy-zh h3 { min-width:0; font-size:14px; line-height:1.25; }
-.hero-school-copy-zh strong { margin-top:0; font-size:13px; line-height:1.25; }
-.hero-school-copy-zh .hero-school-meta { grid-column:1 / -1; min-height:9px; margin-top:0; }
+.hero-school-copy-zh { display:flex; flex-wrap:wrap; align-items:baseline; column-gap:10px; }
+.hero-school-copy-zh h3 { flex:0 1 auto; font-size:14px; }
+.hero-school-copy-zh strong { flex:0 0 auto; margin-top:0; font-size:13px; }
+.hero-school-copy-zh .hero-school-meta { flex:0 0 100%; margin-top:6px; padding-left:1px; }
 
 .now-section { padding-top:62px; padding-bottom:68px; background:var(--section-blue); }
 .now-shell { max-width:1240px; margin:auto; }
