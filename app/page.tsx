@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { projectRecords } from "./project-data";
 
 type Locale = "en" | "zh";
@@ -29,19 +29,18 @@ const content = {
       summary: "I am building an original world model rather than treating reproduction as the endpoint: V-JEPA 2.1 provides dense video representations, while action grounding and Port-Hamiltonian dynamics organize the latent space around controllable physical state evolution.",
       stackTitle: "Model architecture",
       stack: [
-        ["01", "Video representation", "V-JEPA 2.1 dense, temporally consistent features"],
+        ["01", "Video representation & latent action", "V-JEPA 2.1 dense video features paired with LAPA-style action abstraction from visual transitions"],
         ["02", "Structured dynamics", "PH-Dreamer-inspired Port-Hamiltonian flow, energy routing and dissipation"],
         ["03", "Physical grounding", "PSG-JEPA objectives for state identifiability and multi-horizon state change"],
-        ["04", "Latent action", "LAPA-style action abstraction learned from video transitions"],
       ],
       validationTitle: "Current validation",
       validationIntro: "The first baseline cycle is running before full integration, so later gains can be attributed to specific components rather than to a moving experimental setup.",
       validation: [
         ["Baseline alignment", "Align datasets, preprocessing, checkpoints and metrics for the V-JEPA 2.1 representation path and PH-Dreamer-style dynamics."],
-        ["Capability probes", "Measure temporal consistency, physical-state identifiability, action relevance and latent-rollout stability on IntPhys 2 and Diving."],
+        ["Capability probes", "Evaluate action-conditioned latent dynamics and rollout stability on OGBench-Cube, alongside physical-state consistency and identifiability on IntPhys v1."],
         ["Controlled integration", "Introduce grounding, latent-action and Port-Hamiltonian modules one at a time, with matched ablations and failure analysis."],
       ],
-      tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer", "IntPhys 2", "Diving"],
+      tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer", "OGBench-Cube", "IntPhys v1"],
     },
     nowOpportunity: ["Open to", "Thesis · Research · Full-time", "Thesis projects, research opportunities and full-time roles in world models, robot learning and physically grounded intelligence."],
     workKicker: "Engineering portfolio",
@@ -110,10 +109,10 @@ const content = {
     ],
     experienceKicker: "Experience",
     roles: [
-      { date: "Jul 2026 — Present", org: "Sunrising Lab", role: "World Model Algorithm Intern", text: "Building a physics-grounded world model around V-JEPA 2.1 and Port-Hamiltonian latent dynamics, informed by PH-Dreamer, PSG-JEPA and LAPA. Baseline evaluation has started on IntPhys 2 and Diving before controlled module integration and ablation." },
-      { date: "Sep 2024 — Feb 2025", org: "Siemens China · Digital Industries", role: "Smart Manufacturing Intern", text: "Built a client carbon-footprint estimation model from multi-source business-travel data, covering data cleaning, rule modelling and visual deployment." },
+      { date: "Jul 2026 — Present", org: "Sunrising Lab", role: "World Model Algorithm Intern", text: "Building a physics-grounded world model around V-JEPA 2.1 and Port-Hamiltonian latent dynamics, informed by PH-Dreamer, PSG-JEPA and LAPA. Baseline evaluation is now running on OGBench-Cube and IntPhys v1 before controlled module integration and ablation." },
+      { date: "Sep 2024 — Feb 2025", org: "Siemens China · Digital Industries", role: "Smart Manufacturing Intern", text: "Built a client carbon-footprint estimation model from multi-source business-travel data and delivered bilingual technical walkthroughs of production-line systems." },
       { date: "Dec 2023 — Aug 2024", org: "Shanghai AI Laboratory", role: "Large Language Model Algorithm Intern", text: "Designed the MathBench evaluation framework, built its OpenCompass pipeline and benchmarked 30+ leading models. Diagnosed an InternLM2 Russian tokenizer anomaly through cross-language compression analysis and supported the validated fix." },
-      { date: "Jul — Oct 2022", org: "Institute of Automation, CAS", role: "Vision Model Algorithm Intern", text: "Reproduced core ViT and Swin Transformer modules, then migrated and verified an UperNet semantic segmentation stack from PyTorch to MindSpore." },
+      { date: "Jul — Oct 2022", org: "Institute of Automation, CAS", role: "Vision Model Algorithm Intern", text: "Reproduced core ViT and Swin Transformer modules, then migrated and verified a UperNet semantic segmentation stack from PyTorch to MindSpore." },
     ],
     educationLabel: "Education",
     education: [
@@ -193,19 +192,18 @@ const content = {
       summary: "目标不是停留在复现，而是搭建自有世界模型：V-JEPA 2.1 提供稠密视频表征，动作接地与 Port-Hamiltonian 动力学则将潜空间组织为可控的物理状态演化。",
       stackTitle: "模型架构",
       stack: [
-        ["01", "视频表征", "V-JEPA 2.1 稠密且时序一致的特征"],
+        ["01", "视频表征与潜动作", "以 V-JEPA 2.1 提取稠密视频特征，并借鉴 LAPA 从视觉转移中抽象潜动作"],
         ["02", "结构化动力学", "参考 PH-Dreamer 的 Port-Hamiltonian 流、能量路由与耗散"],
         ["03", "物理状态接地", "PSG-JEPA 的状态可识别与多时域状态变化目标"],
-        ["04", "潜动作表征", "借鉴 LAPA 从视频转移中抽象动作的方式"],
       ],
       validationTitle: "当前验证",
       validationIntro: "在整体集成前先跑通第一轮基线，避免实验设置同时变动，使后续改进能够被明确归因。",
       validation: [
         ["基线对齐", "统一 V-JEPA 2.1 表征链路与 PH-Dreamer 式动力学的数据、预处理、Checkpoint 与评测指标。"],
-        ["能力探针", "在 IntPhys 2 与 Diving 上检验时序一致性、物理状态可识别性、动作相关性与潜空间 rollout 稳定性。"],
+        ["能力探针", "在 OGBench-Cube 上验证动作条件潜空间动力学与 rollout 稳定性，并在 IntPhys v1 上检验物理状态一致性与可识别性。"],
         ["受控集成", "逐项加入物理接地、潜动作和 Port-Hamiltonian 模块，通过配对消融与失效分析验证各项设计。"],
       ],
-      tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer", "IntPhys 2", "Diving"],
+      tags: ["V-JEPA 2.1", "Port-Hamiltonian", "PSG-JEPA", "LAPA", "PH-Dreamer", "OGBench-Cube", "IntPhys v1"],
     },
     nowOpportunity: ["开放机会", "实习 · 毕业正式岗位", "正在寻找世界模型、强化学习与机器人方向的实习和毕业正式岗位。"],
     workKicker: "工程实践",
@@ -217,8 +215,8 @@ const content = {
     ],
     experienceKicker: "实习经历",
     roles: [
-      { date: "2026.07 — 至今", org: "光象（北京）科技有限公司", role: "世界模型算法实习生", text: "围绕 V-JEPA 2.1 与 Port-Hamiltonian 潜空间动力学搭建物理结构化世界模型，参考 PH-Dreamer、PSG-JEPA 与 LAPA 的物理接地和潜动作建模思路；已开始在 IntPhys 2 与 Diving 上进行基础模型测验。" },
-      { date: "2024.09 — 2025.02", org: "西门子（中国）· 数字化工业集团", role: "智能制造实习生", text: "基于多源差旅数据构建客户碳足迹计算模型，完成数据清洗、规则建模与可视化部署。" },
+      { date: "2026.07 — 至今", org: "光象（北京）科技有限公司", role: "世界模型算法实习生", text: "围绕 V-JEPA 2.1 与 Port-Hamiltonian 潜空间动力学搭建物理结构化世界模型，参考 PH-Dreamer、PSG-JEPA 与 LAPA 的物理接地和潜动作建模思路；现已在 OGBench-Cube 与 IntPhys v1 上开展基础模型测验。" },
+      { date: "2024.09 — 2025.02", org: "西门子（中国）· 数字化工业集团", role: "智能制造实习生", text: "基于多源差旅数据构建客户碳足迹计算模型，并负责产线系统的中英文技术讲解。" },
       { date: "2023.12 — 2024.08", org: "上海人工智能实验室 · 大模型中心", role: "大语言模型算法实习生", text: "设计 MathBench 数学推理评测体系，基于 OpenCompass 搭建评测流水线并完成 30+ 主流模型对比；通过跨语言压缩率分析定位 InternLM2 俄语 tokenizer 异常，并协助完成修复验证。" },
       { date: "2022.07 — 2022.10", org: "中科院自动化所 · 视觉计算组", role: "视觉模型算法实习生", text: "复现 ViT 与 Swin Transformer 核心模块，并完成 UperNet 语义分割框架从 PyTorch 到 MindSpore 的迁移验证。" },
     ],
@@ -277,19 +275,20 @@ export default function Home() {
   );
   const [paperOpen, setPaperOpen] = useState(false);
   const [openProject, setOpenProject] = useState<string | null>(null);
+  const projectScrollAnchor = useRef<{ slug: string; top: number } | null>(null);
   const t = content[locale];
   const experienceEvidence = locale === "en"
     ? [
         { contribution: "Building a physics-grounded world model from V-JEPA 2.1, Port-Hamiltonian dynamics and action-grounding ideas; baseline testing is underway.", evidence: "V-JEPA 2.1 · PH-Dreamer · PSG-JEPA · LAPA" },
-        { contribution: "Built a client carbon-footprint model from multi-source business-travel data.", evidence: "Data cleaning · rule modelling · visual deployment" },
+        { contribution: "Built a client carbon-footprint model and delivered bilingual technical walkthroughs of production-line systems.", evidence: "Carbon modelling · production-line walkthroughs · bilingual communication" },
         { contribution: "Designed MathBench and built its evaluation pipeline in OpenCompass.", evidence: "ACL Findings 2024 · 30+ models" },
-        { contribution: "Rebuilt ViT/Swin modules and migrated the UperNet stack to MindSpore.", evidence: "PyTorch → MindSpore · verified pipeline" },
+        { contribution: "Rebuilt ViT and Swin Transformer modules and migrated the UperNet stack to MindSpore.", evidence: "PyTorch → MindSpore · verified pipeline" },
       ]
     : [
         { contribution: "基于 V-JEPA 2.1、Port-Hamiltonian 动力学与动作接地思路搭建物理结构化世界模型，已启动基线测验。", evidence: "V-JEPA 2.1 · PH-Dreamer · PSG-JEPA · LAPA" },
-        { contribution: "基于多源差旅数据构建客户碳足迹估算模型。", evidence: "数据清洗 · 规则建模 · 可视化部署" },
+        { contribution: "构建客户碳足迹估算模型，并负责产线系统的中英文技术讲解。", evidence: "碳足迹建模 · 产线技术讲解 · 中英文沟通" },
         { contribution: "设计 MathBench，并在 OpenCompass 中搭建完整评测流水线。", evidence: "ACL Findings 2024 · 30+ 模型" },
-        { contribution: "复现 ViT/Swin，并将 UperNet 完整迁移至 MindSpore。", evidence: "PyTorch → MindSpore · 流程验证" },
+        { contribution: "复现 ViT 与 Swin Transformer，并将 UperNet 完整迁移至 MindSpore。", evidence: "PyTorch → MindSpore · 流程验证" },
       ];
   const experienceBrands = [
     { name: "Sunrising Lab", src: "/organizations/sunrising-ai.webp", href: "https://www.sunrisingai.com/", wide: true },
@@ -300,6 +299,25 @@ export default function Home() {
   useEffect(() => {
     document.documentElement.lang = locale === "en" ? "en" : "zh-CN";
   }, [locale]);
+
+  useLayoutEffect(() => {
+    const anchor = projectScrollAnchor.current;
+    if (!anchor) return;
+
+    const projectCard = document.getElementById(`project-${anchor.slug}`);
+    if (projectCard) {
+      const offset = projectCard.getBoundingClientRect().top - anchor.top;
+      if (Math.abs(offset) > 1) {
+        const root = document.documentElement;
+        const previousScrollBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = "auto";
+        window.scrollBy(0, offset);
+        root.style.scrollBehavior = previousScrollBehavior;
+      }
+    }
+
+    projectScrollAnchor.current = null;
+  }, [openProject]);
 
   const navTargets = ["publication", "projects", "experience", "contact"];
 
@@ -420,8 +438,11 @@ export default function Home() {
             const gallery = detail.gallery.slice(1);
             const hasExplicitGalleryLayout = gallery.some((item) => item.wide);
 
-            return <article className={`project-disclosure${isOpen ? " is-open" : ""}`} key={project.number}>
-              <button className={`project-index-card project-index-${project.slug}`} type="button" aria-expanded={isOpen} aria-controls={detailId} onClick={() => setOpenProject(isOpen ? null : project.slug)}>
+            return <article id={`project-${project.slug}`} className={`project-disclosure${isOpen ? " is-open" : ""}`} key={project.number}>
+              <button className={`project-index-card project-index-${project.slug}`} type="button" aria-expanded={isOpen} aria-controls={detailId} onClick={(event) => {
+                projectScrollAnchor.current = { slug: project.slug, top: event.currentTarget.getBoundingClientRect().top };
+                setOpenProject(isOpen ? null : project.slug);
+              }}>
                 <div className="project-index-visual"><span className="project-number">{project.number}</span><img src={project.cardImage} alt={project.slug === "greenhouse-robot" ? (locale === "en" ? "MIRTE Master hardware used for greenhouse deployment" : "用于温室真机部署的 MIRTE Master 硬件") : project.slug === "hierarchical-motion-planning" ? (locale === "en" ? "MuJoCo bartender workspace and mobile manipulator goal positions" : "MuJoCo 酒吧场景与移动操作机器人目标位置") : project.imageAlt} /></div>
                 <div className="project-index-copy">
                   <p className="project-type">{project.type}</p><h3>{project.title}</h3><p className="project-summary">{project.summary}</p>
