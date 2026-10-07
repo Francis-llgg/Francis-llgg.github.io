@@ -8,8 +8,7 @@ type Locale = "en" | "zh";
 const researchPapers = [
   { name: "DINOv2", title: "DINOv2: Learning Robust Visual Features without Supervision", year: "2023", image: "/research/papers/dinov2.png", href: "https://arxiv.org/abs/2304.07193", reproduced: false },
   { name: "V-JEPA 2.1", title: "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning", year: "2026", image: "/research/papers/v-jepa-2-1.png", href: "https://arxiv.org/abs/2603.14482", reproduced: false },
-  { name: "R2-Dreamer", title: "R2-Dreamer: Redundancy-Reduced World Models without Decoders or Augmentation", year: "2026", image: "/research/papers/r2-dreamer.png", href: "https://arxiv.org/abs/2603.18202", reproduced: true },
-  { name: "PSG-JEPA", title: "Is Forward Prediction Enough? Physical State Grounding for JEPA World Models", year: "2026", image: "/research/papers/psg-jepa.png", href: "https://haodong-yan.github.io/psg-jepa-project-page/", reproduced: true },
+  { name: "LeWM", title: "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels", year: "2026", image: "/research/papers/lewm.png", href: "https://arxiv.org/abs/2603.19312", reproduced: false, baselineEvaluated: true },
 ];
 
 const content = {
@@ -28,19 +27,20 @@ const content = {
     availability: "Open to thesis projects, research and full-time roles",
     nowKicker: "Now / Currently",
     nowTitle: "What I’m working on",
-    nowUpdated: "Updated Sep 2026",
-    nowIntro: "Researching physics-grounded representations for world models, alongside hands-on robot data collection.",
+    nowUpdated: "Updated Oct 2026",
+    nowIntro: "Developing physics-grounded world models, with an experimental path from latent-state probes to real-robot validation.",
     nowModel: {
-      title: "Physics-grounded JEPA world model",
-      status: "Reproductions complete · Model development underway",
-      summary: "I completed reproductions of R2-Dreamer and PSG-JEPA and drew on this work and the DINO and JEPA literature to design my own physics-grounded JEPA model. Implementation and training are now underway, with the goal of learning a physics-grounded encoder.",
+      title: "Physics-grounded JEPA world models",
+      status: "Probes complete · Rollouts & control underway",
+      summary: "I’ve implemented and trained JEPA models with Port-Hamiltonian structure, building on my R2-Dreamer and PSG-JEPA reproductions. Physical-state probes and initial Cube and Scene control tests are complete. World-model rollouts and long-horizon control experiments are now underway, with LIBERO, RoboTwin and real-robot validation to follow.",
       papersTitle: "Research foundations",
-      progressTitle: "My progress",
-      progress: [
-        ["Baseline reproductions", "Complete", "done"],
-        ["Model design", "Complete", "done"],
-        ["Code implementation", "In progress", "active"],
-        ["Model training", "In progress", "active"],
+      roadmapTitle: "Experimental roadmap",
+      roadmap: [
+        ["Physical-state probes", "Examine which physical-state variables can be recovered from the latent representations.", "Complete", "done"],
+        ["World-model rollouts", "Evaluate multi-step predictions, their physical consistency and how errors accumulate over time.", "In progress", "in-progress"],
+        ["Long-horizon control", "Investigate how goal conditioning and action-conditioned predictions support long-horizon control.", "In progress", "in-progress"],
+        ["LIBERO & RoboTwin", "Evaluate the final model on manipulation tasks in benchmarks such as LIBERO and RoboTwin.", "Planned", "planned"],
+        ["Real-robot validation", "Deploy the model on a real robot and evaluate control performance in a physical setting.", "Planned", "planned"],
       ],
       tags: ["DINO", "JEPA", "R2-Dreamer", "PSG-JEPA", "Port-Hamiltonian"],
     },
@@ -124,7 +124,7 @@ const content = {
     ],
     experienceKicker: "Experience",
     roles: [
-      { date: "Jul 2026 — Present", org: "SunrisingAI Co., Ltd.", role: "World Model Algorithm Intern", text: "Completed reproductions of R2-Dreamer and PSG-JEPA and drew on the DINO and JEPA literature to design a JEPA model with video and state inputs and a Port-Hamiltonian predictor for latent state transitions; code implementation and training are in progress toward a physics-grounded encoder. Collected 800 teleoperation data records for USB insertion and removal using a humanoid robot’s 7-DoF arm, and completed data format conversion and validation." },
+      { date: "Jul 2026 — Present", org: "SunrisingAI Co., Ltd.", role: "World Model Algorithm Intern", text: "Reproduced R2-Dreamer and PSG-JEPA, then implemented and trained JEPA variants with Port-Hamiltonian structure. Completed physical-state readout probes and initial OGBench Cube and Scene control evaluations; current work includes recurrent-conditioning ablations and comparisons with PSG-JEPA and LeWM. Collected 800 teleoperation data records for USB insertion and removal using a humanoid robot’s 7-DoF arm, and completed data format conversion and validation." },
       { date: "Sep 2024 — Feb 2025", org: "Siemens China · Digital Industries", role: "Smart Manufacturing Intern", text: "Built a client carbon-footprint estimation model from multi-source business-travel data and delivered bilingual technical walkthroughs of production-line systems." },
       { date: "Dec 2023 — Aug 2024", org: "Shanghai AI Laboratory", role: "Large Language Model Algorithm Intern", text: "Designed the MathBench evaluation framework, built its OpenCompass pipeline and benchmarked 30+ leading models. Diagnosed an InternLM2 Russian tokenizer anomaly through cross-language compression analysis and supported the validated fix." },
       { date: "Jul — Oct 2022", org: "Institute of Automation, CAS", role: "Vision Model Algorithm Intern", text: "Reproduced core ViT and Swin Transformer modules, then migrated and verified a UperNet semantic segmentation stack from PyTorch to MindSpore." },
@@ -175,7 +175,7 @@ const content = {
     paperTakeaway: "A single average score can hide fragile application, language and answer-order sensitivity. MathBench turns those failure modes into visible, actionable evidence.",
     skillTitle: "Working toolkit",
     skillGroups: [
-      ["World models", "JEPA-based multimodal representation learning · Port-Hamiltonian latent transition modeling"],
+      ["World models", "JEPA self-supervised representation learning · Port-Hamiltonian latent dynamics · Physical-state probes · Rollout & long-horizon control evaluation"],
       ["Learning", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"],
       ["Robotics", "ROS2 · Nav2 · Gazebo · MuJoCo · PCL · OpenCV"],
       ["Languages", "Python · C / C++ · MATLAB"],
@@ -200,19 +200,20 @@ const content = {
     availability: "正在寻找实习和毕业正式岗位",
     nowKicker: "当前 / 正在进行",
     nowTitle: "我目前在做什么",
-    nowUpdated: "更新于 2026 年 9 月",
-    nowIntro: "探索面向世界模型的物理表征，同时开展真机任务数据采集。",
+    nowUpdated: "更新于 2026 年 10 月",
+    nowIntro: "构建具有物理结构的世界模型，沿着潜空间探针、多步预测、长程控制到真机验证的路线推进实验。",
     nowModel: {
       title: "物理结构化 JEPA 世界模型",
-      status: "复现已完成 · 自有模型开发中",
-      summary: "已完成 R2-Dreamer 与 PSG-JEPA 的复现，并结合 DINO、JEPA 系列论文调研，完成了自己的物理结构化 JEPA 模型设计。目前正将设计落实为代码并开展训练，目标是学习具有物理表征能力的编码器。",
+      status: "探针已完成 · 多步预测与长程控制进行中",
+      summary: "在复现 R2-Dreamer 与 PSG-JEPA 的基础上，已实现并训练引入 Port-Hamiltonian 结构的 JEPA 模型，完成物理状态探针及初步 Cube、Scene 控制实验。目前正在开展世界模型多步预测与长程控制实验，后续将在 LIBERO、RoboTwin 等机器人操作基准上评测，并进行真机验证。",
       papersTitle: "研究基础",
-      progressTitle: "我的研究进展",
-      progress: [
-        ["基线模型复现", "已完成", "done"],
-        ["自有模型设计", "已完成", "done"],
-        ["代码实现", "进行中", "active"],
-        ["模型训练", "进行中", "active"],
+      roadmapTitle: "实验路线",
+      roadmap: [
+        ["潜空间物理状态探针", "检查哪些物理状态变量能够从潜表征中读出，评估隐空间学到了什么。", "已完成", "done"],
+        ["世界模型多步预测", "开展 world-model rollout，评测多步预测的物理一致性与误差累积。", "进行中", "in-progress"],
+        ["长程控制实验", "结合目标条件与动作条件预测，检验世界模型对长时域控制的支持能力。", "进行中", "in-progress"],
+        ["LIBERO 与 RoboTwin", "在 LIBERO、RoboTwin 等机器人操作基准上验证最终模型的任务表现。", "计划中", "planned"],
+        ["真机验证", "将模型部署到真实机器人，在实际物理环境中评测控制表现。", "计划中", "planned"],
       ],
       tags: ["DINO", "JEPA", "R2-Dreamer", "PSG-JEPA", "Port-Hamiltonian"],
     },
@@ -239,7 +240,7 @@ const content = {
     ],
     experienceKicker: "实习经历",
     roles: [
-      { date: "2026.07 — 至今", org: "光象（北京）科技有限公司", role: "世界模型算法实习生", text: "已完成 R2-Dreamer、PSG-JEPA 复现，并结合 DINO、JEPA 论文调研，设计了以视频和状态观测为输入、采用 Port-Hamiltonian 预测器建模潜状态转移的 JEPA 模型；目前正在进行代码实现与训练，目标是学习具有物理表征能力的编码器。使用人形机器人的 7 自由度机械臂采集 800 条 USB 插拔遥操作数据，并完成格式转换与检查。" },
+      { date: "2026.07 — 至今", org: "光象（北京）科技有限公司", role: "世界模型算法实习生", text: "完成 R2-Dreamer、PSG-JEPA 复现，实现并训练引入 Port-Hamiltonian 结构的 JEPA 变体。已完成物理状态读出探针及 OGBench Cube 与 Scene 首轮控制评测，目前开展递推条件消融，以及与 PSG-JEPA、LeWM 的对照实验。使用人形机器人的 7 自由度机械臂采集 800 条 USB 插拔遥操作数据，并完成格式转换与检查。" },
       { date: "2024.09 — 2025.02", org: "西门子（中国）· 数字化工业集团", role: "智能制造实习生", text: "基于多源差旅数据构建客户碳足迹计算模型，并负责产线系统的中英文技术讲解。" },
       { date: "2023.12 — 2024.08", org: "上海人工智能实验室 · 大模型中心", role: "大语言模型算法实习生", text: "设计 MathBench 数学推理评测体系，基于 OpenCompass 搭建评测流水线并完成 30+ 主流模型对比；通过跨语言压缩率分析定位 InternLM2 俄语 tokenizer 异常，并协助完成修复验证。" },
       { date: "2022.07 — 2022.10", org: "中科院自动化所 · 视觉计算组", role: "视觉模型算法实习生", text: "复现 ViT 与 Swin Transformer 核心模块，并完成 UperNet 语义分割框架从 PyTorch 到 MindSpore 的迁移验证。" },
@@ -286,7 +287,7 @@ const content = {
     ],
     paperTakeaway: "单一平均分会掩盖应用能力、语言表现与答案顺序敏感性。MathBench 将这些失效模式转化为可定位、可改进的证据。",
     skillTitle: "技术栈",
-    skillGroups: [["世界模型", "基于 JEPA 的多模态表征学习 · Port-Hamiltonian 潜状态转移建模"], ["机器学习", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"], ["机器人", "ROS2 · Nav2 · Gazebo · MuJoCo · PCL · OpenCV"], ["编程语言", "Python · C / C++ · MATLAB"], ["系统工具", "Linux · Git · CUDA · JAX"]],
+    skillGroups: [["世界模型", "JEPA 自监督表征学习 · Port-Hamiltonian 潜动力学建模 · 物理状态探针 · 多步预测与长程控制评测"], ["机器学习", "PyTorch · NumPy · Scikit-Learn · Vision Transformers"], ["机器人", "ROS2 · Nav2 · Gazebo · MuJoCo · PCL · OpenCV"], ["编程语言", "Python · C / C++ · MATLAB"], ["系统工具", "Linux · Git · CUDA · JAX"]],
     contactKicker: "联系",
     contactTitle: "一起构建能够理解“下一步会发生什么”的机器人",
     footer: "基于真实研究、代码与真机实验构建。",
@@ -303,13 +304,13 @@ export default function Home() {
   const t = content[locale];
   const experienceEvidence = locale === "en"
     ? [
-        { contribution: content.en.roles[0].text, evidence: "R2-Dreamer · PSG-JEPA · Port-Hamiltonian predictor · 800 data records" },
+        { contribution: "Developed physics-grounded JEPA world models, evaluated control performance and collected robot teleoperation data for USB insertion and removal.", evidence: "Port-Hamiltonian · Physical-state probes · 800 records" },
         { contribution: "Built a client carbon-footprint model and delivered bilingual technical walkthroughs of production-line systems.", evidence: "Carbon modelling · production-line walkthroughs · bilingual communication" },
         { contribution: "Designed MathBench and built its evaluation pipeline in OpenCompass.", evidence: "ACL Findings 2024 · 30+ models" },
         { contribution: "Rebuilt ViT and Swin Transformer modules and migrated the UperNet stack to MindSpore.", evidence: "PyTorch → MindSpore · verified pipeline" },
       ]
     : [
-        { contribution: content.zh.roles[0].text, evidence: "R2-Dreamer · PSG-JEPA · Port-Hamiltonian 预测器 · 800 条数据" },
+        { contribution: "开发物理结构化 JEPA 世界模型并开展控制评测，完成机器人 USB 插拔数据采集。", evidence: "Port-Hamiltonian · 物理状态探针 · 800 条数据" },
         { contribution: "构建客户碳足迹估算模型，并负责产线系统的中英文技术讲解。", evidence: "碳足迹建模 · 产线技术讲解 · 中英文沟通" },
         { contribution: "设计 MathBench，并在 OpenCompass 中搭建完整评测流水线。", evidence: "ACL Findings 2024 · 30+ 模型" },
         { contribution: "复现 ViT 与 Swin Transformer，并将 UperNet 完整迁移至 MindSpore。", evidence: "PyTorch → MindSpore · 流程验证" },
@@ -369,11 +370,11 @@ export default function Home() {
             <div className="hero-actions">
               <a className="primary-action" href="#projects">{t.workCta} <span>↘</span></a>
             </div>
-            <a className="hero-opportunity" href="#contact" aria-label={locale === "en" ? "Open to thesis projects, research and full-time roles — contact me" : "正在寻找实习和毕业正式岗位——联系我"}>
+            <a className="hero-opportunity" href="#contact" aria-label={locale === "en" ? "Open to graduate programmes, graduate roles and full-time roles — contact me" : "正在寻找2027秋招正式岗位——联系我"}>
               <i aria-hidden="true" />
               <span>
                 <small>{locale === "en" ? "Open to" : "正在寻找"}</small>
-                <strong>{locale === "en" ? "Thesis · Research · Full-time" : "实习 · 毕业正式岗位"}</strong>
+                <strong>{locale === "en" ? "Graduate Programme · Graduate roles · Full-time roles" : "2027秋招正式岗位"}</strong>
               </span>
               <b aria-hidden="true">↗</b>
             </a>
@@ -411,15 +412,18 @@ export default function Home() {
             <article className="now-research-card now-research-card-unified">
               <div className="now-card-head"><div className="now-index"><span>01</span><i aria-hidden="true" /></div><span className="now-status">{t.nowModel.status}</span></div>
               <div className="now-model-lead"><h3>{t.nowModel.title}</h3><p className="now-card-summary">{t.nowModel.summary}</p></div>
-              <section className="now-progress-section" aria-labelledby="research-progress-title">
-                <h4 id="research-progress-title">{t.nowModel.progressTitle}</h4>
-                <ol className="now-progress">{t.nowModel.progress.map(([title, status, state], index) => <li key={title} className={state === "active" ? "is-active" : undefined}><span className="now-progress-marker" aria-hidden="true">{state === "active" ? String(index + 1).padStart(2, "0") : "✓"}</span><div><strong>{title}</strong><span>{status}</span></div></li>)}</ol>
+              <section className="now-roadmap-section" aria-labelledby="research-roadmap-title">
+                <h4 id="research-roadmap-title">{t.nowModel.roadmapTitle}</h4>
+                <ol className="now-roadmap">{t.nowModel.roadmap.map(([title, description, status, state], index) => <li key={title} className={`now-roadmap-item is-${state}`}>
+                  <span className="now-roadmap-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                  <div className="now-roadmap-copy"><h5>{title}</h5><p className="now-roadmap-status">{status}</p><p className="now-roadmap-description">{description}</p></div>
+                </li>)}</ol>
               </section>
               <section className="now-papers" aria-labelledby="research-foundations-title">
                 <h4 id="research-foundations-title">{t.nowModel.papersTitle}</h4>
                 <div className="now-paper-grid">{researchPapers.map((paper) => <a className="now-paper-card" key={paper.name} href={paper.href} target="_blank" rel="noreferrer" aria-label={locale === "en" ? `Read ${paper.title} (opens in a new tab)` : `阅读论文：${paper.title}（在新标签页打开）`}>
                   <div className="now-paper-preview"><img src={paper.image} width="600" height="777" alt={locale === "en" ? `First page of ${paper.title}` : `${paper.name} 论文首页`} loading="lazy" /></div>
-                  <div className="now-paper-caption"><div className="now-paper-name"><h5>{paper.name}</h5><span aria-hidden="true">↗</span></div><div className="now-paper-meta"><span className={`now-paper-kind${paper.reproduced ? " is-reproduced" : ""}`}>{paper.reproduced ? (locale === "en" ? "Reproduced" : "已完成复现") : (locale === "en" ? "Literature review" : "文献调研")}</span><span>{paper.year}</span></div></div>
+                  <div className="now-paper-caption"><div className="now-paper-name"><h5>{paper.name}</h5><span aria-hidden="true">↗</span></div><div className="now-paper-meta"><span className={`now-paper-kind${paper.reproduced || paper.baselineEvaluated ? " is-reproduced" : ""}`}>{paper.baselineEvaluated ? (locale === "en" ? "Baseline evaluated" : "已完成基线评测") : paper.reproduced ? (locale === "en" ? "Reproduced" : "已完成复现") : (locale === "en" ? "Literature review" : "文献调研")}</span><span>{paper.year}</span></div></div>
                 </a>)}</div>
               </section>
             </article>
